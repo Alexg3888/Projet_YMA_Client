@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 
 import Error from "../Error";
 import {getCatProduitData} from "../../services/ApiService";
+import Pizza from "./Pizza";
 
 function PizzaMain() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [pizzas, setPizzas] = useState([]);
+    const [categorieProduits, setCategorieProduits] = useState([]);
 
     useEffect(() => {
         getCatProduitData()
-            .then(result => setPizzas(result.data['hydra:member']))
+            .then(result => setCategorieProduits(result.data['hydra:member']))
             .catch((error) => setError(error))
             .finally(() => setIsLoaded(true))
     }, [])
@@ -24,10 +25,19 @@ function PizzaMain() {
             <>
                 <div className="container">
                     <Error error={error} />
+                    {categorieProduits.map(categorieProduit => (
+                        <Pizza
+                            nom = {categorieProduit.nom}
+                            prix = {categorieProduit.prix}
+                            photo = {categorieProduit.photo}
+                            description = {categorieProduit.description}
+                        />
+                    ))}
+
                     <ul>
-                        {pizzas.map(pizza => (
-                            <li key={pizza.nom}>
-                                <a href={pizza['@id']}>{pizza.nom}</a>
+                        {categorieProduits.map(categorieProduit => (
+                            <li key={categorieProduit.nom}>
+                                <a href={categorieProduit['@id']}>{categorieProduit.nom}</a>
                             </li>
                         ))}
                     </ul>
