@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { API_URL } from "./../../constants";
+
 import Error from "../Error";
-import Axios from 'axios';
+import {getCatProduitData} from "../../services/ApiService";
 
 function PizzaMain() {
     const [error, setError] = useState(null);
@@ -9,18 +9,11 @@ function PizzaMain() {
     const [pizzas, setPizzas] = useState([]);
 
     useEffect(() => {
-      Axios.get(API_URL + "/api/categorie_produits")
-          .then((result) => {
-            setIsLoaded(true);
-            setPizzas(result.data['hydra:member']);
-            },   
-          )
-          .catch((error) => {
-            setIsLoaded(true);
-            setError(error);
-            console.log(error);
-        })
-  }, [])
+        getCatProduitData()
+            .then(result => setPizzas(result.data['hydra:member']))
+            .catch((error) => setError(error))
+            .finally(() => setIsLoaded(true))
+    }, [])
 
     if (error) {
         return <div>Une erreur est survenue</div>;
