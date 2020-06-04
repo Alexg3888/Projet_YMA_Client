@@ -11,7 +11,11 @@ function PizzaMain() {
 
     useEffect(() => {
         getCatProduitData()
-            .then(result => setCategorieProduits(result.data['hydra:member']))
+            .then(result => {
+                setCategorieProduits(result.data['hydra:member'][0]['produits']);
+                // console.log(result.data);
+                // console.log(result.data['hydra:member'][0]['produits']);
+            })
             .catch((error) => setError(error))
             .finally(() => setIsLoaded(true))
     }, [])
@@ -25,21 +29,18 @@ function PizzaMain() {
             <>
                 <div className="container">
                     <Error error={error} />
+                    {/*TODO Gérer le gestionnaire d'erreur*/}
+                    <ul>
                     {categorieProduits.map(categorieProduit => (
+                        <li key={categorieProduit.id}>
                         <Pizza
                             nom = {categorieProduit.nom}
                             prix = {categorieProduit.prix}
                             photo = {categorieProduit.photo}
                             description = {categorieProduit.description}
                         />
+                        </li>
                     ))}
-
-                    <ul>
-                        {categorieProduits.map(categorieProduit => (
-                            <li key={categorieProduit.nom}>
-                                <a href={categorieProduit['@id']}>{categorieProduit.nom}</a>
-                            </li>
-                        ))}
                     </ul>
                 </div>
             </>
