@@ -8,22 +8,28 @@ function PizzaMain() {
 
     useEffect(() => {
         fetch("https://127.0.0.1:8000/api/categorie_produits")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    setPizzas(result['hydra:member']);
-                },
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
+            .then(res => {
+              console.log(res.status);
+              if (res.status < 200 || res.status >= 300) {
+                throw new Error(res);
+              }
+              return res.json();
+            })
+            .then((result) => {
+              setIsLoaded(true);
+              setPizzas(result['hydra:member']);
+              },   
             )
+            .catch((error) => {
+              setIsLoaded(true);
+              setError(error);
+              console.log(error);
+          })
     }, [])
 
 
     if (error) {
-        return <div>Erreur : {error.message}</div>;
+        return <div>Une erreur est survenue</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
     } else {
