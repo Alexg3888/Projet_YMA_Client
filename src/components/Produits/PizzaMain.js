@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Error from "../Error";
+import { API_URL } from "./../../constants";
 
 function PizzaMain() {
     const [error, setError] = useState(null);
@@ -7,7 +8,7 @@ function PizzaMain() {
     const [pizzas, setPizzas] = useState([]);
 
     useEffect(() => {
-        fetch("https://127.0.0.1:8000/api/categorie_produits")
+        fetch(API_URL + "/api/categorie_produits")
             .then(res => {
               console.log(res.status);
               if (res.status < 200 || res.status >= 300) {
