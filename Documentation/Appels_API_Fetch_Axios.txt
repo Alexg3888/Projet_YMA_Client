@@ -166,6 +166,10 @@ export const getCustomers = () => {
   return Axios.get(CUSTOMER_ENDPOINT);
 };
 
+//.env.local
+REACT_APP_API_URL=https://localhost:8000
+
+
 // Constants
 
 export const API_ENTRYPOINT = `${process.env.REACT_APP_API_URL}/api`;
