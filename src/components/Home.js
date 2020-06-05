@@ -70,19 +70,23 @@ function Home() {
         {/* <!-- fin a propos --> */}
 
                {/* <!-- picto zone --> */}
-      <div className="container pb-4" id="pictofond">
-        <div className="row mt-5">
+      <div id="pictofond">
+        <div className=" container row mt-5" id="picto">
           <div className="col-sm mt-4">
-            <img src="/HomePage/Pizza.png" alt="..." className="img-thumbnail"/>
+            <img src="/HomePage/Pizza.png" alt="..." />
+            <h3 id="nomPicto">Pizza</h3>
           </div>
-          <div className="col-sm  mt-4">
-            <img src="/HomePage/Burger.png" alt="..." className="img-thumbnail"/>
+          <div className="col-sm mt-4" id="nomPicto">
+            <img src="/HomePage/Burger.png" alt="..." />
+            <h3>Burger</h3>
           </div>
-          <div className="col-sm  mt-4">
-            <img src="/HomePage/Boisson.png" alt="..." className="img-thumbnail"/>
+          <div className="col-sm mt-4" id="nomPicto">
+            <img src="/HomePage/Boisson.png" alt="..."/>
+            <h3>Boisson</h3>
           </div>
-          <div className="col-sm  mt-4">
-            <img src="/HomePage/dessert.png" alt="..." className="img-thumbnail"/>
+          <div className="col-sm mt-4" id="nomPicto">
+            <img src="/HomePage/dessert.png" alt="..."/>
+            <h3>dessert</h3>
          </div>
         </div>
       </div>

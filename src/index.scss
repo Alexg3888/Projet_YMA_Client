@@ -13,3 +13,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#pictofond{
+
+  // background-image: url("./../public/HomePage/fond.jpg")
+  // background-image: url("/HomePage/fond.jpg")
+   background-color: #30343f;
+   height: 100%;
+   text-align: center;
+}
+
+#nomPicto {
+  text-align: center;
+  color: white;
+}
+
