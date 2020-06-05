@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import {getCatProduitData} from "../../services/ApiService";
 import {rechercheProduitsParCategorie} from "../../services/CategorieProduitService";
 import Error from "../Error";
-import Burger from "./Burger";
+import Dessert from "./Dessert";
 
-function BurgerMain() {
+function DessertMain() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [burgers, setBurgers] = useState([]);
-    const NOM_CATEGORIE = 'Burger'
+    const [desserts, setDesserts] = useState([]);
+    const NOM_CATEGORIE = 'Boisson'
 
     useEffect(() => {
         getCatProduitData()
@@ -19,7 +19,7 @@ function BurgerMain() {
                     msgError['message'] = "Catégorie " + NOM_CATEGORIE + " introuvable."
                     setError (msgError)
                 } else {
-                    setBurgers(categorieRecherchee['produits']);
+                    setDesserts(categorieRecherchee['produits']);
                 }
             })
             .catch((error) => setError(error))
@@ -42,23 +42,23 @@ function BurgerMain() {
                 <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="/HomePage/slideburger.jpg" className="d-block w-100" alt="..." />
+                            <img src="/HomePage/slidepizza.jpg" className="d-block w-100" alt="..." />
                         </div>
                     </div>
                 </div>
                 {/* <!-- Fin carousel --> */}
                 <div className="container">
                     <ul>
-                        {burgers.map(categorieProduit => (
-                            <li key={categorieProduit.id}>
-                                <Burger
-                                    nom = {categorieProduit.nom}
-                                    prix = {categorieProduit.prix}
-                                    photo = {categorieProduit.photo}
-                                    description = {categorieProduit.description}
-                                />
-                            </li>
-                        ))}
+                    {desserts.map(categorieProduit => (
+                        <li key={categorieProduit.id}>
+                        <Dessert
+                            nom = {categorieProduit.nom}
+                            prix = {categorieProduit.prix}
+                            photo = {categorieProduit.photo}
+                            description = {categorieProduit.description}
+                        />
+                        </li>
+                    ))}
                     </ul>
                 </div>
             </>
@@ -66,5 +66,4 @@ function BurgerMain() {
     }
 }
 
-
-export default BurgerMain;
+export default DessertMain;

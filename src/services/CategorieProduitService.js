@@ -1,4 +1,3 @@
-
 /**
  * Renvois la listes des produits d'une catégorie
  * @param categorieRecherchee Nom de la catégorie à rechercher

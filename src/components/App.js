@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import Header from "./Header";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NotFound from "./NotFound";
+import Header from "./Header";
+import Home from "./Home";
 import PizzaMain from "./Produits/PizzaMain";
 import BurgerMain from "./Produits/BurgerMain";
-import Home from "./Home";
-// import Home from "./Home";
+import BoissonMain from "./Produits/BoissonMain";
+import DessertMain from "./Produits/DessertMain";
+import NotFound from "./NotFound";
 
 class App extends Component {
   render = () => {
@@ -18,6 +19,8 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/pizza" component={PizzaMain} />
               <Route path="/burger" component={BurgerMain} />
+              <Route path="/boisson" component={BoissonMain} />
+              <Route path="/dessert" component={DessertMain} />
               <Route component={NotFound} />
             </Switch>
           </div>

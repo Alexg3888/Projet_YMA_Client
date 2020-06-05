@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-
-import Error from "../Error";
 import {getCatProduitData} from "../../services/ApiService";
-import Pizza from "./Pizza";
 import {rechercheProduitsParCategorie} from "../../services/CategorieProduitService";
+import Error from "../Error";
+import Pizza from "./Pizza";
 
 function PizzaMain() {
     const [error, setError] = useState(null);
@@ -66,6 +65,5 @@ function PizzaMain() {
         );
     }
 }
-
 
 export default PizzaMain;

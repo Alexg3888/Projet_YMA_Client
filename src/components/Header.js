@@ -2,9 +2,8 @@ import React from "react";
 
 const Header = () => (
 
-  // <!-- nav bar -->
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#">Logo</a>
+      <a className="navbar-brand" href="/">Logo</a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -20,14 +19,17 @@ const Header = () => (
             <a className="nav-link" href="/burger">Burger</a>
           </li>
           <li className="nav-item">
+            <a className="nav-link" href="/boisson">Boisson</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/dessert">Dessert</a>
+          </li>
+          <li className="nav-item">
             <a className="nav-link" href="/contact">Contact</a>
           </li>
         </ul>
       </div>
     </nav>
-  // <!-- fin nav bar -->
-
-
 );
 
 export default Header;
