@@ -40,6 +40,15 @@ function BurgerMain() {
     } else {
         return (
             <>
+                {/* <!-- Carousel  --> */}
+                <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img src="/HomePage/slideburger.jpg" className="d-block w-100" alt="..." />
+                        </div>
+                    </div>
+                </div>
+                {/* <!-- Fin carousel --> */}
                 <div className="container">
                     <ul>
                         {pizzas.map(categorieProduit => (
