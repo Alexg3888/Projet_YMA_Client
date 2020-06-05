@@ -8,7 +8,7 @@ function DessertMain() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [desserts, setDesserts] = useState([]);
-    const NOM_CATEGORIE = 'Boisson'
+    const NOM_CATEGORIE = 'Dessert'
 
     useEffect(() => {
         getCatProduitData()
