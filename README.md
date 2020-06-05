@@ -6,7 +6,8 @@ Description
 
 ### Installation
 
-Cloner le projet
+Cloner le projet.
+
 Créer un fichier .env.local à la racine du projet avec à l'intérieur les variables suivantes :
 
 REACT_APP_SYMFONY_APP_URL=https://localhost:8000
