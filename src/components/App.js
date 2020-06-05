@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./NotFound";
 import PizzaMain from "./Produits/PizzaMain";
 import BurgerMain from "./Produits/BurgerMain";
+import Home from "./Home";
 // import Home from "./Home";
 
 class App extends Component {
@@ -14,9 +15,9 @@ class App extends Component {
         <Router>
           <div>
             <Switch>
+              <Route exact path="/" component={Home} />
               <Route path="/pizza" component={PizzaMain} />
-                <Route path="/burger" component={BurgerMain} />
-              {/* <Route exact path="/" component={Home} /> */}
+              <Route path="/burger" component={BurgerMain} />
               <Route component={NotFound} />
             </Switch>
           </div>
