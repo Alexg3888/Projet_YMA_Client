@@ -1,5 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 
+//*{
+//  border : solid 1px red
+//}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -19,7 +23,6 @@ code {
   // background-image: url("./../public/HomePage/fond.jpg")
   // background-image: url("/HomePage/fond.jpg")
    background-color: #30343f;
-   height: 100%;
    text-align: center;
 }
 
