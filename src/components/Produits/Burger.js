@@ -1,6 +1,6 @@
 import React from "react";
 
-const Pizza = (props) => {
+const Burger = (props) => {
 
     return (
         <div className="container">
@@ -22,4 +22,4 @@ const Pizza = (props) => {
     );
 };
 
-export default Pizza;
+export default Burger;

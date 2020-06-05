@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import Error from "../Error";
 import {getCatProduitData} from "../../services/ApiService";
-import Pizza from "./Pizza";
+import Burger from "./Burger";
 import {rechercheProduitsParCategorie} from "../../services/CategorieProduitService";
 
-function PizzaMain() {
+function BurgerMain() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [pizzas, setPizzas] = useState([]);
-    const NOM_CATEGORIE = 'Pizza'
+    const [pizzas, setBurgers] = useState([]);
+    const NOM_CATEGORIE = 'Hamburger'
 
     useEffect(() => {
         getCatProduitData()
@@ -20,7 +20,7 @@ function PizzaMain() {
                     msgError['Error'] = "Catégorie " + NOM_CATEGORIE + " introuvable."
                     setError ("Ereur : Catégorie " + NOM_CATEGORIE + " introuvable.")
                 } else {
-                    setPizzas(categorieRecherchee['produits']);
+                    setBurgers(categorieRecherchee['produits']);
                 }
             })
             .catch((error) => setError(error))
@@ -43,16 +43,16 @@ function PizzaMain() {
             <>
                 <div className="container">
                     <ul>
-                    {pizzas.map(categorieProduit => (
-                        <li key={categorieProduit.id}>
-                        <Pizza
-                            nom = {categorieProduit.nom}
-                            prix = {categorieProduit.prix}
-                            photo = {categorieProduit.photo}
-                            description = {categorieProduit.description}
-                        />
-                        </li>
-                    ))}
+                        {pizzas.map(categorieProduit => (
+                            <li key={categorieProduit.id}>
+                                <Burger
+                                    nom = {categorieProduit.nom}
+                                    prix = {categorieProduit.prix}
+                                    photo = {categorieProduit.photo}
+                                    description = {categorieProduit.description}
+                                />
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </>
@@ -61,4 +61,4 @@ function PizzaMain() {
 }
 
 
-export default PizzaMain;
+export default BurgerMain;

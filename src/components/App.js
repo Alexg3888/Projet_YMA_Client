@@ -3,6 +3,7 @@ import Header from "./Header";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./NotFound";
 import PizzaMain from "./Produits/PizzaMain";
+import BurgerMain from "./Produits/BurgerMain";
 // import Home from "./Home";
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
           <div>
             <Switch>
               <Route path="/pizza" component={PizzaMain} />
+                <Route path="/burger" component={BurgerMain} />
               {/* <Route exact path="/" component={Home} /> */}
               <Route component={NotFound} />
             </Switch>

@@ -1,5 +1,3 @@
-import Axios from "axios";
-import { API_URL } from "../constants";
 
 /**
  * Renvois la listes des produits d'une catégorie
@@ -10,7 +8,6 @@ import { API_URL } from "../constants";
 export const rechercheProduitsParCategorie =  (categorieRecherchee , categoriesProduits) => {
     for (let categorieProduit of categoriesProduits.data['hydra:member']){
         if (categorieProduit.nom == categorieRecherchee ){
-            // console.log(15, categorieProduit)
             return categorieProduit
         }
     }
