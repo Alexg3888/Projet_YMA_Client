@@ -1,18 +1,21 @@
 import React from "react";
 
 const Header = () => (
-  <ul class="nav justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link active" href="/">Accueil</a>
+  <ul className="nav justify-content-center">
+    <li className="nav-item">
+      <a className="nav-link active" href="/">Accueil</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/pizza">Pizza</a>
+    <li className="nav-item">
+      <a className="nav-link" href="/pizza">Pizza</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/contact">Contact</a>
+      <li className="nav-item">
+          <a className="nav-link" href="/burger">Burger</a>
+      </li>
+    <li className="nav-item">
+      <a className="nav-link" href="/contact">Contact</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Mon compte</a>
+    <li className="nav-item">
+      <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Mon compte</a>
     </li>
   </ul>
 );
