@@ -17,8 +17,8 @@ function BurgerMain() {
                 let categorieRecherchee = rechercheProduitsParCategorie(NOM_CATEGORIE, result)
                 if (categorieRecherchee === null) {
                     let msgError = new Array()
-                    msgError['Error'] = "Catégorie " + NOM_CATEGORIE + " introuvable."
-                    setError ("Ereur : Catégorie " + NOM_CATEGORIE + " introuvable.")
+                    msgError['message'] = "Catégorie " + NOM_CATEGORIE + " introuvable."
+                    setError (msgError)
                 } else {
                     setBurgers(categorieRecherchee['produits']);
                 }
@@ -31,7 +31,6 @@ function BurgerMain() {
         return (
             <>
                 <div>Une erreur est survenue</div>
-                { console.log( error)}
                 <Error error={error} />
 
             </>
