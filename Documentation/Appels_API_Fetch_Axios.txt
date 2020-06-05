@@ -1,0 +1,401 @@
+
+
+// Axios et Fetch
+
+function PizzaMain() {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(true);
+    const [pizzas, setPizzas] = useState([]);
+
+// Fetch dans un useEffect:
+
+useEffect(() => {
+    fetch("https://127.0.0.1:8000/api/categorie_produits")
+      .then(res => {
+        console.log(res.status);
+        if (res.status < 200 || res.status >= 300) { // vériffier qu'on a pas une erreur 500 ou autre
+          throw new Error(res);
+        }
+        return res.json(); // retourner la réponse en json
+      })
+      .then((result) => {
+        setIsLoaded(false); // chargement
+        setPizzas(result['hydra:member']); //json
+      })
+      .catch((error) => {
+        setIsLoaded(false); // chargement
+        setError(error); // remonter une erreur
+      })
+}, []);
+
+// Au départ pour logger la repponse ou l'erreur
+ useEffect(() => {
+    Axios.get("https://127.0.0.1:8000/api/categorie_produits")
+      .then((result) => console.log(result));
+      .catch((error) => console.log(error));
+}, []);
+
+//Ensuite
+  useEffect(() => {
+    Axios.get(API_URL + "/api/categorie_produits")
+      .then((result) => {
+        setIsLoaded(false);
+        setPizzas(result.data['hydra:member']);
+        console.log(result);
+      })
+      .catch((error) => {
+        setIsLoaded(false);
+        setError(error);
+        console.log(error);
+      })
+}, []);
+
+//Alternative avec finally
+  useEffect(() => {
+    Axios.get(API_URL + "/api/categorie_produits")
+      .then((result) => {
+        setPizzas(result.data['hydra:member']);
+      })
+      .catch((error) => setError(error));
+      .finally(() => setIsLoaded(false));
+}, []);
+
+  return()
+}
+
+//************************************************************
+//************************************************************
+// Exemple 1 : Customers
+
+// Axios intégré dans le useEffect dans App
+
+import React, { useState, useEffect } from "react";
+import "./App.scss";
+import Axios from "axios";
+import Circle from "better-react-spinkit/dist/Circle";
+
+function App() {
+  const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    Axios.get("https://localhost:8000/api/customers")
+      .then((res) => {
+        setCustomers(res.data["hydra:member"]);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  return (
+    <div className="container">
+      <h1>Liste des clients</h1>
+      {loading ? (
+        <Circle />
+      ) : (
+        customers.map((customer, index) => {
+          console.log(customer);
+          return (
+            <div className="card" style={{ width: "18rem"}} key={index}>
+              <div className="card-body">
+                <h5 className="card-title">{customer.name}</h5>
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="/" className="btn btn-primary">
+                  Go somewhere
+                </a>
+              </div>
+            </div>
+          );
+        })
+      )}
+    </div>
+  );
+}
+
+export default App;
+
+// Evolution 1 ************************************************
+// Axios dans un fichier service et composant CustomerContainer
+
+import React, { useState } from "react";
+import Circle from "better-react-spinkit/dist/Circle";
+import { useEffect } from "react";
+import { getCustomers } from "../../services/customerService";
+import Customer from "./Customer";
+
+const CustomerContainer = () => {
+  const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getCustomers()
+      .then((res) => {
+        setCustomers(res.data["hydra:member"]);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  return (
+    <>
+      <h1>Liste des clients</h1>
+      {loading ? (
+        <Circle />
+      ) : (
+        customers.map((customer, index) => {
+          return (
+            <Customer key={index} customer={customer} />
+          );
+        })
+      )}
+    </>
+  );
+};
+
+export default CustomerContainer;
+
+// CustomerService
+
+import Axios from "axios";
+import { CUSTOMER_ENDPOINT } from "../utils/constants";
+
+export const getCustomers = () => {
+  return Axios.get(CUSTOMER_ENDPOINT);
+};
+
+// Constants
+
+export const API_ENTRYPOINT = `${process.env.REACT_APP_API_URL}/api`;
+
+export const CUSTOMER_ENDPOINT = API_ENTRYPOINT + '/customers';
+
+// Customer
+
+import React from "react";
+
+const Customer = ({ customer }) => (
+  <div className="card" style={{ width: "18rem" }}>
+    <div className="card-body">
+      <h5 className="card-title">{customer.name}</h5>
+      <p className="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <a href="/" className="btn btn-primary">
+        Go somewhere
+      </a>
+    </div>
+  </div>
+);
+
+export default Customer;
+
+//
+// Evolution 2 - Alternative **********************************
+// Try catch dans CustomerContainer et Async dans Service
+
+import React, { useState } from "react";
+import Circle from "better-react-spinkit/dist/Circle";
+import { useEffect } from "react";
+import { getCustomers } from "../../services/customerService";
+import Customer from "./Customer";
+
+const CustomerContainer = () => {
+  const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const res = await getCustomers();
+        setCustomers(res.data["hydra:member"]);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUsers();
+  }, []);
+
+  return (
+    <>
+      <h1>Liste des clients</h1>
+      {loading ? (
+        <Circle />
+      ) : (
+        customers.map((customer, index) => {
+          return <Customer key={index} customer={customer} />;
+        })
+      )}
+    </>
+  );
+};
+
+export default CustomerContainer;
+
+// CustomerService
+
+import Axios from "axios";
+import { CUSTOMER_ENDPOINT } from "../utils/constants";
+
+export const getCustomers = () => {
+  return Axios.get(CUSTOMER_ENDPOINT);
+};
+
+// Constants
+
+export const API_ENTRYPOINT = `${process.env.REACT_APP_API_URL}/api`;
+
+export const CUSTOMER_ENDPOINT = API_ENTRYPOINT + '/customers';
+
+// Customer
+
+import React from "react";
+
+const Customer = ({ customer }) => (
+  <div className="card" style={{ width: "18rem" }}>
+    <div className="card-body">
+      <h5 className="card-title">{customer.name}</h5>
+      <p className="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <a href="/" className="btn btn-primary">
+        Go somewhere
+      </a>
+    </div>
+  </div>
+);
+
+export default Customer;
+
+//
+//************************************************************
+//************************************************************
+// Exemple 2 : Pizzas
+
+// PizzaMain
+
+import React, { useState, useEffect } from "react";
+import Error from "../Error";
+import {getCatProduitData} from "../../services/ApiService";
+import Pizza from "./Pizza";
+import {rechercheProduitsParCategorie} from "../../services/CategorieProduitService";
+
+function PizzaMain() {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [pizzas, setPizzas] = useState([]);
+    const NOM_CATEGORIE = 'Pizza'
+
+    useEffect(() => {
+        getCatProduitData()
+            .then(result => {
+                let categorieRecherchee = rechercheProduitsParCategorie(NOM_CATEGORIE, result)
+                if (categorieRecherchee === null) {
+                    let msgError = new Array()
+                    msgError['message'] = "Catégorie " + NOM_CATEGORIE + " introuvable."
+                    setError (msgError)
+                } else {
+                    setPizzas(categorieRecherchee['produits']);
+                }
+            })
+            .catch((error) => setError(error))
+            .finally(() => setIsLoaded(true))
+    }, [])
+
+    if (error) {
+        return (
+            <>
+                <div>Une erreur est survenue</div>
+                <Error error={error} />
+            </>
+        )
+    } else if (!isLoaded) {
+        return <div>Chargement...</div>;
+    } else {
+        return (
+            <>
+                <div className="container">
+                    <ul>
+                    {pizzas.map(categorieProduit => (
+                        <li key={categorieProduit.id}>
+                        <Pizza
+                            nom = {categorieProduit.nom}
+                            prix = {categorieProduit.prix}
+                            photo = {categorieProduit.photo}
+                            description = {categorieProduit.description}
+                        />
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+            </>
+        );
+    }
+}
+
+export default PizzaMain;
+
+// Pizza
+
+import React from "react";
+
+const Pizza = (props) => {
+
+    return (
+        <div className="container">
+            <div className="row">
+                <div className="col-8 col-md-5 col-lg-4 col-xl-3 m-auto">
+                    <div className="card shadow mt-3 weather-card">
+                        <div className="card-header text-center">
+                            <h2>{props.nom}</h2>
+                        </div>
+                        <div className="">{props.prix}</div>
+                        <div className=""><img src={props.photo} alt={props.nom}></img></div>
+                        <div className="card-body">{props.description}</div>
+                        <div className="card-footer text-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Pizza;
+
+//
+// ApiService
+
+import Axios from "axios";
+import { API_URL } from "../constants";
+
+export const getCatProduitData = async () => {
+  return Axios.get(API_URL + "/api/categorie_produits");
+};
+
+// CategorieProduitService
+
+/**
+ * Renvois la listes des produits d'une catégorie
+ * @param categorieRecherchee Nom de la catégorie à rechercher
+ * @param categoriesProduits Réponse de l'API sur https://127.0.0.1:8000/api/categorie_produits
+ * @returns {null|any} null ou détail d'une catégorie
+ */
+export const rechercheProduitsParCategorie =  (categorieRecherchee , categoriesProduits) => {
+    for (let categorieProduit of categoriesProduits.data['hydra:member']){
+        if (categorieProduit.nom == categorieRecherchee ){
+            return categorieProduit
+        }
+    }
+    return null;
+};
+
+// Constants
+
+export const API_URL = "https://localhost:8000";
