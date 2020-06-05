@@ -9,7 +9,7 @@ function BurgerMain() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [pizzas, setBurgers] = useState([]);
-    const NOM_CATEGORIE = 'Hamburger'
+    const NOM_CATEGORIE = 'Burger'
 
     useEffect(() => {
         getCatProduitData()
