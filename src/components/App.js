@@ -13,9 +13,9 @@ class App extends Component {
   render = () => {
     return (
       <>
-        <Header />
         <Router>
-          <div>
+            <Header />
+            <div>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/pizza" component={PizzaMain} />
