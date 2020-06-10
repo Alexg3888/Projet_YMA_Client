@@ -25,7 +25,6 @@ function ProduitsListe(props) {
             .finally(() => setIsLoaded(true))
     }, [])
 
-
     return (<>
             {
                 (error) ?
@@ -37,11 +36,7 @@ function ProduitsListe(props) {
                     )
                     : (<> {!isLoaded && (<div>Chargement...</div>)}
                         <div className="row">
-
-
                             {produits.map((categorieProduit, index) => (
-
-
                                 <ProduitCard key={index}
                                              id={categorieProduit.id}
                                              nom={categorieProduit.nom}
@@ -53,12 +48,10 @@ function ProduitsListe(props) {
                             ))}
 
                         </div>
-                    </>)}
-
-
+                    </>)
+            }
         </>
     )
-
 
 }
 
