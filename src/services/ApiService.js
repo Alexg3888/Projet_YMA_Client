@@ -14,12 +14,12 @@ export const getCatProduitData = () => {
 
 //MEMO : le async de cette fonction sert a attendre le retour de "Axios.post(API_LOGIN, jsonBody)" avant de faire le "window.localStorage.setItem"
 export async function login(email, password){
+  email = "user4auth"
+  password = "%!password4auth!%"
   const jsonBody = {
-    "username":"user4auth",
-    "password":"%!password4auth!%"
+    "username": email,
+    "password": password
   }
-
-
   const token = (await Axios.post(API_LOGIN, jsonBody)).data.token
   window.localStorage.setItem('token', token)
 }

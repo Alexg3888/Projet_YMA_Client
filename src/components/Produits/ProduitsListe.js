@@ -42,7 +42,8 @@ function ProduitsListe(props) {
                             {produits.map((categorieProduit, index) => (
 
 
-                                <ProduitCard key={categorieProduit.id}
+                                <ProduitCard key={index}
+                                             id={categorieProduit.id}
                                              nom={categorieProduit.nom}
                                              prix={categorieProduit.prix}
                                              photo={categorieProduit.photo}
