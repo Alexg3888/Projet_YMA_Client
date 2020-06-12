@@ -14,7 +14,8 @@ function PanierMain() {
                 {/*TODO YC : Rafraichir le panier une fois celui-ci supprimer*/}
 
                 {/*****Bouton vider le panier*/}
-                <button type="button" className="btn btn-secondary btn-lg btn-block" onClick={()=>(supprimerPanier())}>Vider le panier
+                <button type="button" className="btn btn-dark" onClick={()=>(supprimerPanier())}>
+                    Vider le panier
                 </button>
                 {/*****FIN Bouton vider le panier*/}
             </div>

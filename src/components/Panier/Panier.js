@@ -2,22 +2,25 @@ import React, {useState, useEffect} from "react";
 import {getContenuPanier} from "../../services/ApiService";
 import Error from "../Error";
 import PanierLigne from "./PanierLigne";
+import {supprimerPanier} from "../../services/PanierService";
+import PanierTotal from "./PanierTotal";
 
 function Panier(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [panier, setPanier] = useState([]);
+    const [totalPanier, setTotalPanier] = useState(0);
 
     useEffect(() => {
         getContenuPanier()
             .then(result => {
                 if (result === null) {
                     let msgError = new Array()
-                    msgError['message'] = "Panier vide"
+                    msgError['message'] = "Retour API sans réponse (result == null)"
                     setError(msgError)
                 } else {
-                    console.log(result)
-                    setPanier(result.data);
+                    setPanier(result.data[0].panier);
+                    setTotalPanier(result.data[1].totalPanier);
                 }
             })
             .catch((error) => setError(error))
@@ -44,6 +47,8 @@ function Panier(props) {
                                              photo={panierLigne.photo}
                                 />
                             ))}
+                            {/*TODO YC : Créer un total de panier*/}
+                            <PanierTotal total={totalPanier}/>
                         </div>
                     </>)
             }
