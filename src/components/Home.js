@@ -1,29 +1,8 @@
 import React, {useState, useEffect} from "react";
-// import Error from "../Error";
-// import {getOffreMomentData} from "../../services/ApiService";
+import Video from "./Utils/Video";
 
 function Home() {
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(true);
-    const [offres, setOffres] = useState([]);
 
-    // useEffect(() => {
-    //     getOffreMomentData()
-    //         .then(result =>setOffres(result.data['hydra:member']))
-    //         .catch((error) => setError(error))
-    //         .finally(() => setIsLoaded(true))
-    // }, [])
-
-    // if (error) {
-    //     return (
-    //         <>
-    //             <div>Une erreur est survenue</div>
-    //             <Error error={error} />
-    //         </>
-    //     )
-    // } else if (!isLoaded) {
-    //     return <div>Chargement...</div>;
-    // } else {
     return (
         <>
             {/* <!-- Carousel  --> */}
@@ -74,13 +53,25 @@ function Home() {
             </div>
             {/* <!-- fin a propos --> */}
 
+            {/* <!-- Zone Video --> */}
+            <div className="container">
+                <div className="row mt-5">
+                    <div className="col-auto mx-auto">
+                        <Video
+                            width={900}
+                            poster={"/HomePage/video_poster.jpg"}
+                            source={"/HomePage/video_presentation.mp4"}
+                            type="video/mp4"
+                        />
+                    </div>
+                </div>
+            </div>
+            {/* <!-- Fin zone Video --> */}
+
             {/* <!-- picto zone --> */}
             <div id="pictofond">
-
                 <div className="container mt-5 pb-3">
                     <div className="row text-center" id="picto">
-
-
                         <div className="col-sm mb-1 mt-3" id="nomPicto">
                             <img src="/HomePage/pizza.png" alt="..."/>
                             <h3 id="nomPicto">Pizza</h3>
@@ -98,16 +89,12 @@ function Home() {
                             <img src="/HomePage/dessert.png" alt="..."/>
                             <h3 id="nomPicto">Dessert</h3>
                         </div>
-
-
                     </div>
                 </div>
-
             </div>
             {/* <!-- Fin picto zone --> */}
 
             {/* <!-- Zone banière --> */}
-
             <div className="container">
                 <div className="row mt-4">
                     <div className="col mt-4"><img src="/HomePage/bannièrepizza.jpg" alt="..."
@@ -121,13 +108,10 @@ function Home() {
                                                    className="img-thumbnail"/></div>
                 </div>
             </div>
-
             {/* <!-- Fin Zone banière --> */}
-
 
         </>
     );
 }
-
 
 export default Home;
