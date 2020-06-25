@@ -9,6 +9,7 @@ import DessertMain from "./Produits/DessertMain";
 import Contact from "./Contact";
 import NotFound from "./NotFound";
 import PanierMain from "./Panier/PanierMain";
+import InscriptionMain from "./utilisateur/InscriptionMain";
 
 class App extends Component {
     render = () => {
@@ -25,6 +26,7 @@ class App extends Component {
                             <Route path="/dessert" component={DessertMain}/>
                             <Route path="/contact" component={Contact}/>
                             <Route path="/panier" component={PanierMain}/>
+                            <Route path="/inscription" component={InscriptionMain} />
                             <Route component={NotFound}/>
                         </Switch>
                     </div>
