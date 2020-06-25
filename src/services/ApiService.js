@@ -4,6 +4,7 @@ import {supprimerPanier} from "./PanierService";
 
 export const getCatProduitData = () => {
     return Axios.get(API_CATEGORIE_PRODUIT_ENDPOINT, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+        // TODO YC : Ne pas s'authentifier si echec de l appel a API_CATEGORIE_PRODUIT_ENDPOINT
         .catch(async (e) => {
             if (e.response.status == '401') {
                 await login()

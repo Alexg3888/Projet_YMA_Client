@@ -6,7 +6,7 @@ function InscriptionMain() {
     return (
         <>
             <div className="container">
-            <InscriptionFormulaire/>
+                <InscriptionFormulaire/>
             </div>
         </>
     )

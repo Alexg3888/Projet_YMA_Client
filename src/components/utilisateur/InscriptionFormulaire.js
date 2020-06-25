@@ -1,12 +1,27 @@
 import React from "react";
 import {useForm} from "react-hook-form";
+import {API_INSCRIPTION} from "../../constants";
+import Axios from "axios";
 
 function InscriptionFormulaire() {
     const {handleSubmit, register, errors} = useForm();
-    const onSubmit = values => console.log(values);
+    const onSubmit = values => {
+        console.log(values);
+        return Axios.post(API_INSCRIPTION, values)
+            .then(result => {
+                if (result.data['reponse'] == 'utilisateur enregistre'){
+                    alert('utilisateur enregistre')
+                }
+
+            })
+
+            //TODO YC : Gérer correctement l'erreur d'appel a l'API
+            .catch(async (e) => {
+                alert('erreur API BackEnd')
+            })
+    }
 
     return (
-
 
         <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -15,6 +30,7 @@ function InscriptionFormulaire() {
                 <input
                     type="email"
                     className="form-control"
+                    defaultValue="test@test.com"
                     name="email"
                     ref={register({
                         required: "Champs obligatoire",
@@ -31,6 +47,7 @@ function InscriptionFormulaire() {
                 <input
                     type="password"
                     className="form-control"
+                    defaultValue="password123"
                     name="password"
                     ref={register({
                         required: "Champs obligatoire",
@@ -46,7 +63,7 @@ function InscriptionFormulaire() {
             <div className="form-group">
                 <label htmlFor="prenom">Prénom</label>
                 <input
-                    class="form-control"
+                    className="form-control"
                     name="prenom"
                     defaultValue="test"
                     ref={register({
@@ -62,8 +79,9 @@ function InscriptionFormulaire() {
             <div className="form-group">
                 <label htmlFor="nom">Nom</label>
                 <input
-                    class="form-control"
+                    className="form-control"
                     name="nom"
+                    defaultValue="test"
                     ref={register({
                         required: "Champs obligatoire",
                         pattern: {
@@ -79,6 +97,7 @@ function InscriptionFormulaire() {
                 <input
                     className="form-control"
                     name="num"
+                    defaultValue="18"
                     ref={register({
                         required: "Champs obligatoire",
                         pattern: {
@@ -94,6 +113,7 @@ function InscriptionFormulaire() {
                 <input
                     className="form-control"
                     name="rue"
+                    defaultValue="test rue"
                     ref={register({
                         required: "Champs obligatoire",
                         pattern: {
@@ -109,6 +129,7 @@ function InscriptionFormulaire() {
                 <input
                     className="form-control"
                     name="cp"
+                    defaultValue="78001"
                     ref={register({
                         required: "Champs obligatoire",
                         pattern: {
@@ -124,6 +145,7 @@ function InscriptionFormulaire() {
                 <input
                     className="form-control"
                     name="ville"
+                    defaultValue="test ville"
                     ref={register({
                         required: "Champs obligatoire",
                         pattern: {
@@ -139,6 +161,7 @@ function InscriptionFormulaire() {
                 <input
                     className="form-control"
                     name="telephone"
+                    defaultValue="0102030405"
                     ref={register({
                         required: "Champs obligatoire",
                         pattern: {
@@ -149,7 +172,7 @@ function InscriptionFormulaire() {
                 <small className="form-text text-muted text-warning">{errors.telephone && errors.telephone.message}</small>
             </div>
 
-            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <button type="submit" className="btn btn-primary">Envoyer</button>
         </form>
     )
 
