@@ -2,22 +2,40 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import {API_INSCRIPTION} from "../../constants";
 import Axios from "axios";
+import {login} from "../../services/ApiService";
+import {useHistory} from "react-router-dom";
 
-function InscriptionFormulaire() {
+
+function InscriptionFormulaire(props) {
     const {handleSubmit, register, errors} = useForm();
+
+    const history = useHistory();
+
     const onSubmit = values => {
-        console.log(values);
+        // console.log(values);
         return Axios.post(API_INSCRIPTION, values)
-            .then(result => {
-                if (result.data['reponse'] == 'utilisateur enregistre'){
-                    alert('utilisateur enregistre')
+            .then(async (result) => {
+                if (result.data['reponse'] == 'utilisateur enregistre') {
+
+                    await login(values.email, values.password)
+                        .then(() => {
+                            props.handleLoginState(true)
+                            alert('utilisateur enregistré et connecté')
+                            history.push("/"); //redirection homepage
+                        })
+                        .catch(async (e) => {
+                            //TODO YC : Gérer correctement l'erreur d'appel a l'API
+                            alert('Erreur obtention token, voir console')
+                            console.log(e)
+                        })
                 }
 
             })
 
             //TODO YC : Gérer correctement l'erreur d'appel a l'API
             .catch(async (e) => {
-                alert('erreur API BackEnd')
+                alert('erreur API BackEnd lors de l\'enregistrement du user , voir console')
+                console.log(e)
             })
     }
 
@@ -30,7 +48,7 @@ function InscriptionFormulaire() {
                 <input
                     type="email"
                     className="form-control"
-                    defaultValue="test@test.com"
+                    defaultValue= {Math.round(new Date().getTime() / 1000) + "@test.com"}
                     name="email"
                     ref={register({
                         required: "Champs obligatoire",
@@ -57,7 +75,8 @@ function InscriptionFormulaire() {
                         }
                     })}/>
                 <small className="form-text text-muted">8 caractères minimum dont un chiffre et une lettre</small>
-                <small className="form-text text-muted text-warning">{errors.password && errors.password.message}</small>
+                <small
+                    className="form-text text-muted text-warning">{errors.password && errors.password.message}</small>
             </div>
 
             <div className="form-group">
@@ -169,7 +188,8 @@ function InscriptionFormulaire() {
                             message: "Telephone invalide"
                         }
                     })}/>
-                <small className="form-text text-muted text-warning">{errors.telephone && errors.telephone.message}</small>
+                <small
+                    className="form-text text-muted text-warning">{errors.telephone && errors.telephone.message}</small>
             </div>
 
             <button type="submit" className="btn btn-primary">Envoyer</button>

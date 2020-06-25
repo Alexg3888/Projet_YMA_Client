@@ -1,6 +1,7 @@
 import Axios from "axios";
-import {API_CATEGORIE_PRODUIT_ENDPOINT, API_PANIER, API_LOGIN} from "../constants";
+import {API_CATEGORIE_PRODUIT_ENDPOINT, API_PANIER, API_LOGIN, TOKEN_TTL} from "../constants";
 import {supprimerPanier} from "./PanierService";
+import jwt_decode from "jwt-decode";
 
 export const getCatProduitData = () => {
     return Axios.get(API_CATEGORIE_PRODUIT_ENDPOINT, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
@@ -18,14 +19,15 @@ export const getCatProduitData = () => {
 
 //MEMO : le async de cette fonction sert a attendre le retour de "Axios.post(API_LOGIN, jsonBody)" avant de faire le "window.localStorage.setItem"
 export async function login(email, password) {
-    email = "user4auth"
-    password = "%!password4auth!%"
     const jsonBody = {
         "username": email,
         "password": password
     }
     const token = (await Axios.post(API_LOGIN, jsonBody)).data.token
     window.localStorage.setItem('token', token)
+    const decodedToken = jwt_decode(token);
+    window.localStorage.setItem('useremail', decodedToken.username)
+    window.localStorage.setItem('dateToken', String(Math.round(new Date().getTime() / 1000)))
 }
 
 export async function getContenuPanier() {
@@ -49,5 +51,4 @@ export async function getContenuPanier() {
                 throw e
             }
         })
-
 }

@@ -1,8 +1,12 @@
 import React from "react";
 import Panier from "./Panier";
 import {supprimerPanier} from "../../services/PanierService";
+import {checkTokenValidity} from "../../services/authentificationService";
 
-function PanierMain() {
+function PanierMain(props) {
+
+    //Vérifie la validité du token et se déconnecte si expiré
+    props.handleLoginState(checkTokenValidity())
 
     return (
         <>
@@ -21,7 +25,6 @@ function PanierMain() {
             </div>
         </>
     )
-
 }
 
 export default PanierMain;

@@ -1,12 +1,12 @@
 import React from "react";
 import InscriptionFormulaire from "./InscriptionFormulaire";
 
-function InscriptionMain() {
+function InscriptionMain(props) {
 
     return (
         <>
             <div className="container">
-                <InscriptionFormulaire/>
+                <InscriptionFormulaire handleLoginState={props.handleLoginState}/>
             </div>
         </>
     )
