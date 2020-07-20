@@ -47,26 +47,24 @@ function Home() {
                             commodo consequat. </p>
                     </div>
                     <div className="col">
-                        <img src="/HomePage/photo_home.jpg" alt="..." className="img-thumbnail"/>
+                        {/* <!-- Zone Video --> */}
+                        <div className="row mt-5">
+                            <div className="col-auto mx-auto">
+                                <Video
+                                    width={640}
+                                    poster={"/HomePage/video_poster.jpg"}
+                                    source={"/HomePage/video_presentation.mp4"}
+                                    type="video/mp4"
+                                />
+                            </div>
+                        </div>
+                        {/* <!-- Fin zone Video --> */}
                     </div>
                 </div>
             </div>
             {/* <!-- fin a propos --> */}
 
-            {/* <!-- Zone Video --> */}
-            <div className="container">
-                <div className="row mt-5">
-                    <div className="col-auto mx-auto">
-                        <Video
-                            width={900}
-                            poster={"/HomePage/video_poster.jpg"}
-                            source={"/HomePage/video_presentation.mp4"}
-                            type="video/mp4"
-                        />
-                    </div>
-                </div>
-            </div>
-            {/* <!-- Fin zone Video --> */}
+
 
             {/* <!-- picto zone --> */}
             <div id="pictofond">
