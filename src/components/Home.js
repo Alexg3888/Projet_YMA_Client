@@ -34,24 +34,20 @@ function Home() {
             <div className="container">
                 <div className="row mt-5">
                     <div className="col">
-                        <h2>A propos</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. </p>
+                        <h2>Qui sommes-nous ?</h2>
+                        <hr className="my-2"/>
+                        <p>Bistrot House vous invite à découvrir son concept de cuisine ouverte et à 
+                            venir déguster ses burgers préparés à la commande, ses frites fraîches maison et ses 
+                            boisson et dessert maison. 
+                            Le tout à un prix défiant toute concurrence.</p>
+                        <p>Notre équipe sera ravie de vous accueillir à Lyon 6eme !</p> 
+                        <p>Pas envie de sortir ? Nous réalisons également la livraison de repas à domicile à Lyon.</p>
                     </div>
-                    <div className="col">
+                    {/* <div className="col"> */}
                         {/* <!-- Zone Video --> */}
-                        <div className="row mt-5">
                             <div className="col-auto mx-auto">
                                 <Video
-                                    width={640}
+                                    width={550}
                                     poster={"/HomePage/video_poster.jpg"}
                                     source={"/HomePage/video_presentation.mp4"}
                                     type="video/mp4"
@@ -60,8 +56,8 @@ function Home() {
                         </div>
                         {/* <!-- Fin zone Video --> */}
                     </div>
-                </div>
-            </div>
+                {/* </div> */}
+        
             {/* <!-- fin a propos --> */}
 
 
@@ -95,19 +91,53 @@ function Home() {
             {/* <!-- Zone banière --> */}
             <div className="container">
                 <div className="row mt-4">
-                    <div className="col mt-4"><img src="/HomePage/bannièrepizza.jpg" alt="..."
-                                                   className="img-thumbnail"/></div>
-                    <div className="col mt-4"><img src="/HomePage/bannièreburger.jpg" alt="..."
-                                                   className="img-thumbnail"/></div>
+                    <div className="col mt-4"><a href="http://localhost:3000/pizza"><img src="/HomePage/bannièrepizza.jpg" alt="..."
+                                                    className="img-thumbnail"/></a></div>
+                    <div className="col mt-4"><a href="http://localhost:3000/burger"><img src="/HomePage/bannièreburger.jpg" alt="..."
+                                                   className="img-thumbnail"/></a></div>
                     <div className="w-100"></div>
-                    <div className="col mt-4"><img src="/HomePage/bannièreboisson.jpg" alt="..."
-                                                   className="img-thumbnail"/></div>
-                    <div className="col mt-4"><img src="/HomePage/bannièredessert.jpg" alt="..."
-                                                   className="img-thumbnail"/></div>
+                    <div className="col mt-4"><a href="http://localhost:3000/boisson"><img src="/HomePage/bannièreboisson.jpg" alt="..."
+                                                   className="img-thumbnail"/></a></div>
+                    <div className="col mt-4"><a href="http://localhost:3000/dessert"><img src="/HomePage/bannièredessert.jpg" alt="..."
+                                                   className="img-thumbnail"/></a></div>
                 </div>
             </div>
-            {/* <!-- Fin Zone banière --> */}
+            {/* <!-- Zone banière --> */}
 
+            {/* <!-- Call to Action --> */}
+           
+                <div className="jumbotron">
+                        <h1 className="display-4">Notre offre du moment</h1>
+                        <hr className="my-4"/>
+                        <p className="lead">Réservez dès maintenant pour bénéficier d'une remise de 20% sur le prix du Menu.</p>
+                        <a className="btn btn-warning btn-lg" href="http://localhost:3000/contact" role="button">Commander</a>                  
+                </div>
+
+            {/* <!-- Fin Call to Action--> */}
+
+            {/* <!-- Adresse + carte --> */}
+
+            <div className="container">
+                <div class="row mt-5 ">
+                    <div class="col">
+                    <h2>Bistrot House</h2>
+                        <h5>Adresse</h5>
+                        <hr className="my-2"/>
+                        <p>26 Boulevard Jules Favre, 69006 Lyon </p>
+                        <h5>Contact</h5> 
+                        <hr className="my-2"/> 
+                        <p>06 06 06 06 06</p>
+                        <p>Contact@Bistrot-House.com</p>
+                        <h5>Horaire</h5> 
+                        <hr className="my-2"/>
+                        <p>Bistrot House vous accueille 7j/7 de 8h à 1h.</p>
+                    </div>
+                    <div className="col">
+                    <img src="/HomePage/carte.JPG" className="d-block w-100" alt="..."/>
+                    </div>
+                </div>
+            </div>
+             {/* <!-- Fin Adresse + carte --> */}
         </>
     );
 }

@@ -13,17 +13,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h2{
+  font-family: 'Just Another Hand', cursive;
+}
+
+.container {
+  flex-direction: row;
+
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-#pictofond{
+// Zone Picto CSS
 
-  // background-image: url("./../public/HomePage/fond.jpg")
-  // background-image: url("/HomePage/fond.jpg")
-   background-color: #30343f;
-   text-align: center;
+
+#pictofond{
+  background-image: url('/HomePage/fond.jpg');
+  background-size: cover;
 }
 
 #nomPicto {
@@ -36,4 +45,33 @@ code {
 .miniproduit{
   width: 50px;
   height: auto;
+}
+
+
+
+// Zone Call to action (Jumbotron) CSS
+
+.jumbotron{
+  background-image: url('/HomePage/jumbotron_fond.jpg');
+  margin-top: 50px;
+  padding-top:50px ;
+  text-align: center;
+ color: white;
+ background-size: cover;
+}
+
+
+.my-4{
+  background-color: #fcbe06;
+  height: 5px;
+  width: 100px
+}
+
+// Zone adresse + map
+
+.my-2{
+  background-color: #fcbe06;
+  height: 4px;
+  width: 100px;
+  margin-right: 500px;
 }

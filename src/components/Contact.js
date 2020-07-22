@@ -4,21 +4,38 @@ const Contact = () => {
 
   return (
       <>
-        <div className="container">
-            <div className="">
-              <h2>Contact</h2><br />
-              <address>
-                <h3>Restaurant La beautée</h3>
-                <p>35 rue du bonheur culinaire</p>
-                <p>69000 Lyon</p>
-                <a href="mailto:resto@labeautee.com">resto@labeautee</a>
-                <p>04 00 11 22 33</p>
-              </address>
+                  {/* <!-- Carousel  --> */}
+                  <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                <div className="carousel-inner">
+                    <div className="carousel-item active">
+                        <img src="/HomePage/slidepagecontact.jpg" className="d-block w-100" alt="..."/>
+                    </div>
+                </div>
             </div>
-            <div className="">
-              <img src="" alt="Map" className=""/>
+            {/* <!-- Fin carousel --> */}
+            {/* <!-- Adresse + carte --> */}
+
+            <div className="container">
+                <div class="row mt-5 ">
+                    <div class="col">
+                    <h2>Bistrot House</h2>
+                        <h5>Adresse</h5>
+                        <hr className="my-2"/>
+                        <p>26 Boulevard Jules Favre, 69006 Lyon </p>
+                        <h5>Contact</h5> 
+                        <hr className="my-2"/> 
+                        <p>06 06 06 06 06</p>
+                        <p>Contact@Bistrot-House.com</p>
+                        <h5>Horaire</h5> 
+                        <hr className="my-2"/>
+                        <p>Bistrot House vous accueille 7j/7 de 8h à 1h.</p>
+                    </div>
+                    <div className="col">
+                    <img src="/HomePage/carte.JPG" className="d-block w-100" alt="..."/>
+                    </div>
+                </div>
             </div>
-      </div>
+             {/* <!-- Fin Adresse + carte --> */}
     </>
   );
 }
