@@ -13,6 +13,7 @@ import PanierMain from "./Panier/PanierMain";
 import InscriptionMain from "./Utilisateur/InscriptionMain";
 import {checkTokenValidity, deconnexion} from "../services/authentificationService";
 import ConnexionMain from "./Utilisateur/ConnexionMain";
+import TapasMain from "./Produits/TapasMain";
 
 function App() {
     const [loginState, setLoginState] = useState(checkTokenValidity());
@@ -34,6 +35,7 @@ function App() {
                         <Route exact path="/" component={Home}/>
                         <Route path="/pizza" component={PizzaMain}/>
                         <Route path="/burger" component={BurgerMain}/>
+                        <Route path="/tapas" component={TapasMain}/>
                         <Route path="/boisson" component={BoissonMain}/>
                         <Route path="/dessert" component={DessertMain}/>
                         <Route path="/contact" component={Contact}/>
@@ -48,7 +50,6 @@ function App() {
                 </div>
                 <Footer />
             </Router>
-            <div className="mt-4"></div>
         </>
     )
 }
