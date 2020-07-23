@@ -31,6 +31,9 @@ function Header(props) {
                         <li className={'nav-item ' + isActive('/burger')}>
                             <Link className='nav-link' to="/burger">Burger</Link>
                         </li>
+                        <li className={'nav-item ' + isActive('/tapas')}>
+                            <Link className='nav-link' to="/tapas">Tapas</Link>
+                        </li>
                         <li className={'nav-item ' + isActive('/boisson')}>
                             <Link className='nav-link' to="/boisson">Boisson</Link>
                         </li>
@@ -47,9 +50,7 @@ function Header(props) {
                         <li className={'nav-item ' + isActive('/inscription')}>
                             <Link className='nav-link' to="/inscription">Inscription</Link>
                         </li>}
-
                     </ul>
-
 
                     {/*explication de la ligne ci-dessous :*/}
                     {/*props.loginState && <BoutonUtilisateurConnecte loginState={props.loginState}/>*/}
