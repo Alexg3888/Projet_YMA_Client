@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from "./Header";
+import Footer from "./Footer";
 import Home from "./Home";
 import PizzaMain from "./Produits/PizzaMain";
 import BurgerMain from "./Produits/BurgerMain";
@@ -45,6 +46,7 @@ function App() {
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
+                <Footer />
             </Router>
             <div className="mt-4"></div>
         </>
