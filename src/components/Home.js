@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {useLocation, Link} from "react-router-dom";
 import Video from "./Utils/Video";
 
 function Home() {
@@ -91,15 +92,15 @@ function Home() {
             {/* <!-- Zone banière --> */}
             <div className="container">
                 <div className="row mt-4">
-                    <div className="col mt-4"><a href="http://localhost:3000/pizza"><img src="/HomePage/bannièrepizza.jpg" alt="..."
-                                                    className="img-thumbnail"/></a></div>
-                    <div className="col mt-4"><a href="http://localhost:3000/burger"><img src="/HomePage/bannièreburger.jpg" alt="..."
-                                                   className="img-thumbnail"/></a></div>
+                    <div className="col mt-4"><Link to="/pizza"><img src="/HomePage/bannièrepizza.jpg" alt="..."
+                                                    className="img-thumbnail"/></Link></div>
+                    <div className="col mt-4"><Link to="/burger"><img src="/HomePage/bannièreburger.jpg" alt="..."
+                                                   className="img-thumbnail"/></Link></div>
                     <div className="w-100"></div>
-                    <div className="col mt-4"><a href="http://localhost:3000/boisson"><img src="/HomePage/bannièreboisson.jpg" alt="..."
-                                                   className="img-thumbnail"/></a></div>
-                    <div className="col mt-4"><a href="http://localhost:3000/dessert"><img src="/HomePage/bannièredessert.jpg" alt="..."
-                                                   className="img-thumbnail"/></a></div>
+                    <div className="col mt-4"><Link to="/boisson"><img src="/HomePage/bannièreboisson.jpg" alt="..."
+                                                   className="img-thumbnail"/></Link></div>
+                    <div className="col mt-4"><Link to="/dessert"><img src="/HomePage/bannièredessert.jpg" alt="..."
+                                                   className="img-thumbnail"/></Link></div>
                 </div>
             </div>
             {/* <!-- Zone banière --> */}
