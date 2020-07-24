@@ -47,6 +47,7 @@ export const ajouterProduitAuPanier =  (idProduit) => {
     
 Piste d'amélioration :
 
-    Insérer dans le panier du local storage les informations produit nom, description, photo afin d'éviter la requete
-    à l'API pour l'affichage et la gestion du panier. 
+    Insérer dans le panier du local storage les infos produit 
+    nom, description, photo et prix afin d'éviter la requete
+    à l'API pour l'affichage du panier. 
    
