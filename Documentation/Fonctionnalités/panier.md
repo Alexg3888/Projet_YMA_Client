@@ -1,6 +1,6 @@
 # FONCTIONNALITE DE PANIER
 
-Afin de maintenit en mémoire le panier, nous avions trois solutions :
+Afin de maintenir en mémoire le panier, nous avions trois solutions :
 
 - La première consiste à créer un état général du panier dans notre composant parent le plus haut
     et de passer en parametre à ces enfants, une fonction permettant de l'ajout au panier.
@@ -12,12 +12,12 @@ Afin de maintenit en mémoire le panier, nous avions trois solutions :
     Ce pendant, le systeme de hook personnalisés semble complexe à appréhender
     
 - La troisième solution serait d'utiliser le local storage du navigateur. Les données du panier ne comportant
-    rien de semsible, uniquement les id produits, on peut tout à fait les stocker ici.
+    rien de sensible, uniquement les id produits, on peut tout à fait les stocker ici.
     
 Nous avons donc choisi la 3e solution :
 
 >Nous avons donc créer un fichier PanierService.js qui contiendra toutes nos
->fonctions métiers liées à la gestion du panier. Celui-ci est implemetable de
+>fonctions métiers liées à la gestion du panier. Celui-ci est implementable de
 >n'importe quelle partie du site et sans complexité.
 
 >La fonction nommée ajouterProduitAuPanier() utilise les méthodes :
