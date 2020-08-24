@@ -31,7 +31,7 @@ const Contact = () => {
                         <p>Bistrot House vous accueille 7j/7 de 8h à 1h.</p>
                     </div>
                     <div className="col">
-                    <img src="/HomePage/carte.JPG" className="d-block w-100" alt="..."/>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2783.3565308084235!2d4.855894915774261!3d45.76404462140625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea89c07c6663%3A0x33ac6f782adc9be3!2s26%20Boulevard%20Jules%20Favre%2C%2069006%20Lyon!5e0!3m2!1sfr!2sfr!4v1598272917372!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
                 </div>
             </div>

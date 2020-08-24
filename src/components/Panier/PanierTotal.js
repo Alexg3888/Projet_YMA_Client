@@ -5,7 +5,7 @@ function PanierTotal(props) {
 
     return (
         <>
-            <button type="button" className="btn btn-secondary btn-lg btn-block" onClick={()=>(supprimerPanier())}>
+            <button type="button" className="btn btn-outline-secondary btn-lg btn-block mt-5" onClick={()=>(supprimerPanier())}>
                 Total : {props.total} €
             </button>
         </>

@@ -10,15 +10,15 @@ function PanierMain(props) {
 
     return (
         <>
-            <div className="container">
-                <div><h1>PANIER</h1></div>
+            <div className="container mt-5">
+                <div className="panier mb-5"><h1>PANIER</h1></div>
 
                 <Panier />
 
                 {/*TODO YC : Rafraichir le panier une fois celui-ci supprimer*/}
 
                 {/*****Bouton vider le panier*/}
-                <button type="button" className="btn btn-dark" onClick={()=>(supprimerPanier())}>
+                <button type="button" className="btn btn-warning mt-5" onClick={()=>(supprimerPanier())}>
                     Vider le panier
                 </button>
                 {/*****FIN Bouton vider le panier*/}

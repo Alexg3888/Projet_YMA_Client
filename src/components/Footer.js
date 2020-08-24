@@ -3,7 +3,7 @@ import {useLocation, Link} from "react-router-dom";
 
 function Footer() {
     return ( 
-    <footer className="fixed-bottom" style={{ backgroundColor: '#333333' }}>
+    <footer className="bottom" style={{ backgroundColor: '#333333' }}>
         <div className="container-fluid" style={{ fontSize: '12px', height: '40px' }}>
             <div className="row display-footer">
                 <div className="text-light text-left col-4 pl-5 d-flex flex-wrap align-content-center justify-content-start">

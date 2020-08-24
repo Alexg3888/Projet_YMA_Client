@@ -74,7 +74,7 @@ function InscriptionFormulaire(props) {
                             message: "Mot de passe invalide"
                         }
                     })}/>
-                <small className="form-text text-muted">8 caractères minimum dont un chiffre et une lettre</small>
+                <small className="form-text">8 caractères minimum dont un chiffre et une lettre</small>
                 <small
                     className="form-text text-muted text-warning">{errors.password && errors.password.message}</small>
             </div>
@@ -192,7 +192,7 @@ function InscriptionFormulaire(props) {
                     className="form-text text-muted text-warning">{errors.telephone && errors.telephone.message}</small>
             </div>
 
-            <button type="submit" className="btn btn-primary">Envoyer</button>
+            <button type="submit" className="btn btn-warning">Envoyer</button>
         </form>
     )
 
