@@ -55,7 +55,7 @@ function Header(props) {
                     {/*explication de la ligne ci-dessous :*/}
                     {/*props.loginState && <BoutonUtilisateurConnecte loginState={props.loginState}/>*/}
                     {/*Si auth.loginState est vrai, alors envoie ce qu'il y a apres le &&, si non renvoie false*/}
-                    <span className="navbar-text"> {props.loginState ?  <BoutonUtilisateurConnecte loginState={props.loginState} handleLoginState={props.handleLoginState}/> : <BoutonSeConnecter />} </span>
+                    <span className="navbar-text btn btn-warning px-4"> {props.loginState ?  <BoutonUtilisateurConnecte loginState={props.loginState} handleLoginState={props.handleLoginState}/> : <BoutonSeConnecter />} </span>
                 </div>
             </nav>
         </div>
