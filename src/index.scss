@@ -119,19 +119,16 @@ body {
 }
 
 #page-content {
+  
   flex: 1 0 auto;
 }
 
 #sticky-footer {
-  flex-shrink: none;
+  font-family: 'Just Another Hand', cursive;
 }
 
 .d-block{
   width: 50%;
-}
-
-#logo-footer{
-  align-items: center;
 }
 
 // panier
