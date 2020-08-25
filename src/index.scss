@@ -113,10 +113,25 @@ code {
 
 // Footer
 
-.bottom{
+html,
+body {
+  height: 100%;
+}
 
-  margin-top: 50px;
+#page-content {
+  flex: 1 0 auto;
+}
 
+#sticky-footer {
+  flex-shrink: none;
+}
+
+.d-block{
+  width: 50%;
+}
+
+#logo-footer{
+  align-items: center;
 }
 
 // panier

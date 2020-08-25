@@ -3,22 +3,25 @@ import {useLocation, Link} from "react-router-dom";
 
 function Footer() {
     return ( 
-    <footer className="bottom" style={{ backgroundColor: '#333333' }}>
-        <div className="container-fluid" style={{ fontSize: '12px', height: '40px' }}>
-            <div className="row display-footer">
-                <div className="text-light text-left col-4 pl-5 d-flex flex-wrap align-content-center justify-content-start">
-                    Copyright <i className="fab fa-creative-commons mr-1"></i> 2020 / Tous droits réservés.
+    <footer id="sticky-footer" className="py-4 mt-5 bg-dark text-white">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm">
+                    <small>Copyright &copy; Bristrot House 2020</small>
                 </div>
-                <div className="text-center col-4 d-flex flex-wrap align-content-center justify-content-center">
-                <img src="/HomePage/logo_nav_blanc.png" className="d-block mt-1" alt="..." height="34px" width="90px"/>
+                 <div className="col-sm d-flex flex-wrap align-content-center justify-content-center">
+                    <img src="/HomePage/logo_nav_blanc.png" className="d-block"></img>                                        
                 </div>
-                <div className="text-light text-right col-4 pr-5 d-flex flex-wrap align-content-center justify-content-end">
-                    <Link className='nav-link text-white' to="/contact">Contact</Link>
+                <div className="col-sm text-right">
+                    <a href="/Contact">Contact</a>                              
                 </div>
             </div>
         </div>
     </footer>
+
     )
 }
+
+
 
 export default Footer;
