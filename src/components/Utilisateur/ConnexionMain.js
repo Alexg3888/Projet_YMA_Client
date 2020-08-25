@@ -26,8 +26,10 @@ function ConnexionMain(props) {
     return (
 
         <form onSubmit={handleSubmit(onSubmit)}>
-
-            <div className="form-group">
+        <div class="container"> 
+        <div class="row mt-5">
+                <div className="col">
+            <div className="form-group mt-5">
                 <label htmlFor="email">Email</label>
                 <input
                     type="email"
@@ -57,14 +59,21 @@ function ConnexionMain(props) {
                             message: "Mot de passe invalide"
                         }
                     })}/>
-                <small className="form-text text-muted">8 caractères minimum dont un chiffre et une lettre</small>
+                <small className="form-text text-mute">8 caractères minimum dont un chiffre et une lettre</small>
                 <small
                     className="form-text text-muted text-warning">{errors.password && errors.password.message}</small>
             </div>
 
-            <button type="submit" className="btn btn-primary">Envoyer</button>
+            <button type="submit" className="btn btn-warning">Envoyer</button>
 
             {/*TODO YC : Gérer la perte de mot de passe*/}
+        </div> 
+
+        <div className="col">
+                    <img src="/HomePage/burger-connexion.jpg" className="d-block w-100" alt="..."/>
+            </div>
+        </div>
+        </div>
         </form>
     )
 
