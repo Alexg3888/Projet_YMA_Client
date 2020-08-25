@@ -12,8 +12,8 @@ function Header(props) {
     }
 
     return (
-        // <div className='container-fluid'>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container">
+            <nav className="navbar navbar-expand-lg navbar-light bg-white">
                 <a className="navbar-brand" href="/"><img src="/HomePage/logo_nav.png" className="d-block w-100"
                                                           alt="..."/></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -58,7 +58,7 @@ function Header(props) {
                     <span className="navbar-text"> {props.loginState ?  <BoutonUtilisateurConnecte loginState={props.loginState} handleLoginState={props.handleLoginState}/> : <BoutonSeConnecter />} </span>
                 </div>
             </nav>
-        // </div>
+        </div>
     )
 };
 
