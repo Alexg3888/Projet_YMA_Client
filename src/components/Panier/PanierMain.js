@@ -21,8 +21,7 @@ function PanierMain(props) {
             </div>
             {/* <!-- Fin carousel --> */}
             <div className="container mt-5">
-                <div className="panier mb-5"><h1>PANIER</h1></div>
-
+            
                 <Panier />
 
                 {/*TODO YC : Rafraichir le panier une fois celui-ci supprimer*/}
