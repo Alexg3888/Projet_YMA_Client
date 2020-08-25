@@ -13,7 +13,7 @@ function Footer() {
                     <img src="/HomePage/logo_nav_blanc.png" className="d-block"></img>                                        
                 </div>
                 <div className="col-sm text-right">
-                    <a href="/Contact">Contact</a>                              
+                    <Link className='nav-link' to="/contact">Contact</Link>
                 </div>
             </div>
         </div>
