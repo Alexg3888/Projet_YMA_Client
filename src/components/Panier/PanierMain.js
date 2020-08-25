@@ -10,6 +10,16 @@ function PanierMain(props) {
 
     return (
         <>
+
+                    {/* <!-- Carousel  --> */}
+                    <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                <div className="carousel-inner">
+                    <div className="carousel-item active">
+                        <img src="/HomePage/slidevotrepanier.jpg" className="d-block w-100" alt="..."/>
+                    </div>
+                </div>
+            </div>
+            {/* <!-- Fin carousel --> */}
             <div className="container mt-5">
                 <div className="panier mb-5"><h1>PANIER</h1></div>
 
