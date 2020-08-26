@@ -6,6 +6,8 @@ import {useHistory} from "react-router-dom";
 
 function PanierMain(props) {
 
+    const history = useHistory();
+
     //Vérifie la validité du token et se déconnecte si expiré
     props.handleLoginState(checkTokenValidity())
 
