@@ -14,6 +14,8 @@ import InscriptionMain from "./Utilisateur/InscriptionMain";
 import {checkTokenValidity, deconnexion} from "../services/authentificationService";
 import ConnexionMain from "./Utilisateur/ConnexionMain";
 import TapasMain from "./Produits/TapasMain";
+import validationPanier from "./Panier/ValidationPanier";
+import ValidationPanier from "./Panier/ValidationPanier";
 
 function App() {
     const [loginState, setLoginState] = useState(checkTokenValidity());
@@ -39,6 +41,7 @@ function App() {
                         <Route path="/boisson" component={BoissonMain}/>
                         <Route path="/dessert" component={DessertMain}/>
                         <Route path="/contact" component={Contact}/>
+                        <Route path="/validationPanier" component={ValidationPanier}/>
                         <Route path="/connexion" render={(props) => <ConnexionMain {...props}
                                                                              handleLoginState={(etat) => handleLoginState(etat)}/>}/>
                         <Route path="/panier" render={(props) => <PanierMain {...props}

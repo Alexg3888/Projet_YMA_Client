@@ -2,6 +2,7 @@ import React from "react";
 import Panier from "./Panier";
 import {supprimerPanier} from "../../services/PanierService";
 import {checkTokenValidity} from "../../services/authentificationService";
+import {useHistory} from "react-router-dom";
 
 function PanierMain(props) {
 
@@ -29,6 +30,11 @@ function PanierMain(props) {
                 {/*****Bouton vider le panier*/}
                 <button type="button" className="btn btn-warning mt-5" onClick={()=>(supprimerPanier())}>
                     Vider le panier
+                </button>
+                {/*****FIN Bouton vider le panier*/}
+                {/*****Bouton vider le panier*/}
+                <button type="button" className="btn btn-warning mt-5 ml-5" onClick={()=>(history.push("/validationPanier"))}>
+                    Valider le panier
                 </button>
                 {/*****FIN Bouton vider le panier*/}
             </div>

@@ -1,5 +1,5 @@
 import Axios from "axios";
-import {API_CATEGORIE_PRODUIT_ENDPOINT, API_PANIER, API_LOGIN, TOKEN_TTL} from "../constants";
+import {API_CATEGORIE_PRODUIT_ENDPOINT, API_PANIER, API_LOGIN, TOKEN_TTL, API_VALIDATION_CDE} from "../constants";
 import {supprimerPanier} from "./PanierService";
 import jwt_decode from "jwt-decode";
 
@@ -47,6 +47,21 @@ export async function getContenuPanier() {
             if (e.response.status == '401') {
                 await login()
                 return Axios.post(API_PANIER, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+            } else {
+                throw e
+            }
+        })
+}
+
+export async function postValidationPanier() {
+    let panier = JSON.parse(window.localStorage.getItem('panier'));
+    let jsonBody = {}
+    jsonBody['idProduit'] = panier;
+    return Axios.post(API_VALIDATION_CDE, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+        .catch(async (e) => {
+            if (e.response.status == '401') {
+                await login()
+                return Axios.post(API_VALIDATION_CDE, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
             } else {
                 throw e
             }
