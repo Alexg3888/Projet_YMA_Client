@@ -17,8 +17,8 @@ const Contact = () => {
 
             <div className="container">
                 <div class="row mt-5 ">
-                    <div class="col">
-                    <h2>Bistrot House</h2>
+                <div class="col mt-5">
+                    <h2 className="mb-4">Bistrot House</h2>
                         <h5>Adresse</h5>
                         <hr className="my-2"/>
                         <p>26 Boulevard Jules Favre, 69006 Lyon </p>

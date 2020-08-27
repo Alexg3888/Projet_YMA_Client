@@ -34,7 +34,7 @@ function Home() {
             {/* <!-- a propos --> */}
             <div className="container">
                 <div className="row mt-5">
-                    <div className="col">
+                    <div className="col mt-4">
                         <h2>Qui sommes-nous ?</h2>
                         <hr className="my-2"/>
                         <p>Bistrot House vous invite à découvrir son concept de cuisine ouverte et à 
@@ -120,8 +120,8 @@ function Home() {
 
             <div className="container">
                 <div class="row mt-5 ">
-                    <div class="col">
-                    <h2>Bistrot House</h2>
+                    <div class="col mt-5">
+                    <h2 className="mb-4">Bistrot House</h2>
                         <h5>Adresse</h5>
                         <hr className="my-2"/>
                         <p>26 Boulevard Jules Favre, 69006 Lyon </p>
