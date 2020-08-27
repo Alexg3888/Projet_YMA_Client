@@ -26,7 +26,7 @@ const Contact = () => {
                         <hr className="my-2"/> 
                         <p>06 06 06 06 06</p>
                         <p>Contact@Bistrot-House.com</p>
-                        <h5>Horaire</h5> 
+                        <h5>Horaires</h5> 
                         <hr className="my-2"/>
                         <p>Bistrot House vous accueille 7j/7 de 8h à 1h.</p>
                     </div>
