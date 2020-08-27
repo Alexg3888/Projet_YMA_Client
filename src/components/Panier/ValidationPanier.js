@@ -11,6 +11,7 @@ function ValidationPanier() {
         postValidationPanier()
             .then(async (result) => {
                 if (result.data['reponse'] == 'Commande enregistree') {
+                    window.localStorage.setItem('panier', "[]")
                     setIsLoaded(true)
                 }
             })
