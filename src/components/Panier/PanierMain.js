@@ -30,7 +30,10 @@ function PanierMain(props) {
                 {/*TODO YC : Rafraichir le panier une fois celui-ci supprimer*/}
 
                 {/*****Bouton vider le panier*/}
-                <button type="button" className="btn btn-warning mt-5" onClick={()=>(supprimerPanier())}>
+                <button type="button" className="btn btn-warning mt-5" onClick={()=> {
+                    supprimerPanier()
+                    history.push("/")
+                }}>
                     Vider le panier
                 </button>
                 {/*****FIN Bouton vider le panier*/}
