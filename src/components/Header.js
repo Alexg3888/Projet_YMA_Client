@@ -14,8 +14,7 @@ function Header(props) {
     return (
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light bg-white">
-                <a className="navbar-brand" href="/"><img src="/HomePage/logo_nav.png" className="d-block w-100"
-                                                          alt="..."/></a>
+                <a className="navbar-brand" href="/"><img src="/HomePage/logo_nav.png" className="d-block w-100" alt="..."/></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -25,20 +24,26 @@ function Header(props) {
                         <li className={'nav-item ' + isActive('/')}>
                             <Link className="nav-link" to="/">Accueil <span className="sr-only">(current)</span></Link>
                         </li>
-                        <li className={'nav-item ' + isActive('/pizza')}>
-                            <Link className='nav-link' to="/pizza">Pizza</Link>
-                        </li>
-                        <li className={'nav-item ' + isActive('/burger')}>
-                            <Link className='nav-link' to="/burger">Burger</Link>
-                        </li>
-                        <li className={'nav-item ' + isActive('/tapas')}>
-                            <Link className='nav-link' to="/tapas">Tapas</Link>
-                        </li>
-                        <li className={'nav-item ' + isActive('/boisson')}>
-                            <Link className='nav-link' to="/boisson">Boisson</Link>
-                        </li>
-                        <li className={'nav-item ' + isActive('/dessert')}>
-                            <Link className='nav-link' to="/dessert">Dessert</Link>
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Nos produits </a>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li className={'nav-item ' + isActive('/pizza')}>
+                                    <Link className='nav-link' to="/pizza">Pizza</Link>
+                                </li>
+                                <li className={'nav-item ' + isActive('/burger')}>
+                                    <Link className='nav-link' to="/burger">Burger</Link>
+                                </li>
+                                 <li className={'nav-item ' + isActive('/tapas')}>
+                                    <Link className='nav-link' to="/tapas">Tapas</Link>
+                                </li>
+                                <li className={'nav-item ' + isActive('/boisson')}>
+                                    <Link className='nav-link' to="/boisson">Boisson</Link>
+                                </li>
+                                <li className={'nav-item ' + isActive('/dessert')}>
+                                     <Link className='nav-link' to="/dessert">Dessert</Link>
+                                 </li>
+                            </div>
                         </li>
                         <li className={'nav-item ' + isActive('/contact')}>
                             <Link className='nav-link' to="/contact">Contact</Link>
