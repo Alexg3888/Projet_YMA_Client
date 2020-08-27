@@ -29,7 +29,14 @@ function ValidationPanier() {
                         </>
                     )
                     : (<> {!isLoaded && (<div>Chargement...</div>)}
-                        {isLoaded && (<div>VICTOIRE</div>)}
+                        {isLoaded && (<div>
+                            <div class="jumbotron-validation jumbotron-fluid">
+                                <div class="container">
+                                    <h1 class="display-4">Votre panier a bien été validé</h1>
+                                <p class="lead">le règlement se fera par cb ou espéce, nous n'acceptons plus les chèques</p>
+                                </div>
+                            </div>
+                                     </div>)}
                     </>)
             }
         </>
