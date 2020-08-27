@@ -38,7 +38,14 @@ function PanierMain(props) {
                 </button>
                 {/*****FIN Bouton vider le panier*/}
                 {/*****Bouton vider le panier*/}
-                <button type="button" className="btn btn-warning mt-5 ml-5" onClick={()=>(history.push("/validationPanier"))}>
+                <button type="button" className="btn btn-warning mt-5 ml-5" onClick={()=>{
+                    let panier = window.localStorage.getItem('panier');
+                    if (panier != '[]'){
+                        history.push("/validationPanier")
+                    } else {
+                        alert ("Panier vide, impossible de valider la commande")
+                    }
+                }}>
                     Valider le panier
                 </button>
                 {/*****FIN Bouton vider le panier*/}
