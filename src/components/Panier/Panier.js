@@ -37,7 +37,13 @@ function Panier(props) {
                             <Error error={error}/>
                         </>
                     )
-                    : (<> {!isLoaded && (<div>Chargement...</div>)}
+                    : (<> {!isLoaded && (
+                        <div class="d-flex justify-content-center">
+                            <div className="spinner-grow text-warning" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        )}
                         <div className="row">
                             {panier.map((panierLigne, index) => (
                                 <PanierLigne key={index}

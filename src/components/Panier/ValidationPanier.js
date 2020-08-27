@@ -17,7 +17,6 @@ function ValidationPanier() {
             .catch((error) => setError(error))
             }, [])
 
-
     return (
         <>
             {
@@ -28,20 +27,27 @@ function ValidationPanier() {
                             <Error error={error}/>
                         </>
                     )
-                    : (<> {!isLoaded && (<div>Chargement...</div>)}
-                        {isLoaded && (<div>
-                            <div class="jumbotron-validation jumbotron-fluid">
-                                <div class="container">
-                                    <h1 class="display-4">Votre panier a bien été validé</h1>
-                                <p class="lead">le règlement se fera par cb ou espéce, nous n'acceptons plus les chèques</p>
+                    : (<> {!isLoaded && (
+                        <div class="d-flex justify-content-center pt-5">
+                            <div className="spinner-grow text-warning" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        )}
+                        {isLoaded && (
+                        <div>
+                            <div className="jumbotron-validation jumbotron-fluid">
+                                <div className="container">
+                                    <h1 className="display-4">Votre panier a bien été validé</h1>
+                                    <p className="lead">le règlement se fera par cb ou espéce, nous n'acceptons plus les chèques</p>
                                 </div>
                             </div>
-                                     </div>)}
-                    </>)
+                        </div>)}
+                    </>
+                )
             }
         </>
     )
-
 }
 
 export default ValidationPanier;
