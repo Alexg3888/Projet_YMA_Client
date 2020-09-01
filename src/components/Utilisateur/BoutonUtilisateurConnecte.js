@@ -1,8 +1,10 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {deconnexion} from "../../services/authentificationService";
 
 function BoutonUtilisateurConnecte(props) {
+    const history = useHistory();
+
     return (
         <>
             <div className="row">
@@ -12,6 +14,7 @@ function BoutonUtilisateurConnecte(props) {
                 <Link to="#" onClick={()=>{
                     props.handleLoginState(false)
                     deconnexion()
+                    history.push("/")
                 }}>Se déconnecter</Link>
             </div>
         </>

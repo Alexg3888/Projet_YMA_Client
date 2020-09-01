@@ -37,7 +37,7 @@ function PanierMain(props) {
                     Vider le panier
                 </button>
                 {/*****FIN Bouton vider le panier*/}
-                {/*****Bouton vider le panier*/}
+                {/*****Bouton valider le panier*/}
                 <button type="button" className="btn btn-warning mt-5 ml-5" onClick={()=>{
                     let panier = window.localStorage.getItem('panier');
                     if (panier != '[]'){
@@ -48,7 +48,7 @@ function PanierMain(props) {
                 }}>
                     Valider le panier
                 </button>
-                {/*****FIN Bouton vider le panier*/}
+                {/*****FIN Bouton valider le panier*/}
             </div>
         </>
     )

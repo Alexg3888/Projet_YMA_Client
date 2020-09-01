@@ -16,6 +16,8 @@ import ConnexionMain from "./Utilisateur/ConnexionMain";
 import TapasMain from "./Produits/TapasMain";
 import validationPanier from "./Panier/ValidationPanier";
 import ValidationPanier from "./Panier/ValidationPanier";
+import UtilisateurMain from "./Utilisateur/UtilisateurMain";
+import Historique from "./Utilisateur/Historique";
 
 function App() {
     const [loginState, setLoginState] = useState(checkTokenValidity());
@@ -41,6 +43,8 @@ function App() {
                         <Route path="/boisson" component={BoissonMain}/>
                         <Route path="/dessert" component={DessertMain}/>
                         <Route path="/contact" component={Contact}/>
+                        <Route path="/utilisateur" component={UtilisateurMain}/>
+                        <Route path="/historique" component={Historique}/>
                         <Route path="/validationPanier" component={ValidationPanier}/>
                         <Route path="/connexion" render={(props) => <ConnexionMain {...props}
                                                                              handleLoginState={(etat) => handleLoginState(etat)}/>}/>

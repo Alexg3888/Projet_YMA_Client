@@ -1,5 +1,12 @@
 import Axios from "axios";
-import {API_CATEGORIE_PRODUIT_ENDPOINT, API_PANIER, API_LOGIN, TOKEN_TTL, API_VALIDATION_CDE} from "../constants";
+import {
+    API_CATEGORIE_PRODUIT_ENDPOINT,
+    API_PANIER,
+    API_LOGIN,
+    TOKEN_TTL,
+    API_VALIDATION_CDE,
+    API_DONNEES_UTILISATEUR, API_HISTORIQUE_UTILSIATEUR
+} from "../constants";
 import {supprimerPanier} from "./PanierService";
 import jwt_decode from "jwt-decode";
 
@@ -16,6 +23,34 @@ export const getCatProduitData = () => {
         })
 
 };
+
+export const getHistorique = () => {
+    return Axios.get(API_HISTORIQUE_UTILSIATEUR, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+        // TODO YC : Ne pas s'authentifier si echec de l appel a API_CATEGORIE_PRODUIT_ENDPOINT
+        .catch(async (e) => {
+            if (e.response.status == '401') {
+                await login()
+                return Axios.get(API_HISTORIQUE_UTILSIATEUR, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+            } else {
+                throw e
+            }
+        })
+
+};
+
+export const getDonneesUtilisateur = () => {
+    return Axios.get(API_DONNEES_UTILISATEUR, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+        .catch(async (e) => {
+            if (e.response.status == '401') {
+                await login()
+                return Axios.get(API_DONNEES_UTILISATEUR, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+            } else {
+                throw e
+            }
+        })
+
+};
+
 
 //MEMO : le async de cette fonction sert a attendre le retour de "Axios.post(API_LOGIN, jsonBody)" avant de faire le "window.localStorage.setItem"
 export async function login(email, password) {
