@@ -10,8 +10,9 @@ import Error from "../Error";
 function UtilisateurDonnees(props) {
     const {handleSubmit, register, errors} = useForm();
     const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [donnesUtilisateursLoaded, setDonnesUtilisateursLoaded] = useState(false);
     const [donneesUtilisateur, setDonneesUtilisateur] = useState([]);
+    const [donnesUtilisateursSaving, setDonnesUtilisateursSaving] = useState(false);
 
     const history = useHistory();
 
@@ -19,20 +20,22 @@ function UtilisateurDonnees(props) {
         getDonneesUtilisateur()
             .then(result => {
                 setDonneesUtilisateur(result.data)
-                setIsLoaded(true)
+                setDonnesUtilisateursLoaded(true)
             })
 
     }, [])
 
 
     const onSubmit = values => {
-        // console.log(values);
+        setDonnesUtilisateursSaving(true)
         return Axios.put(API_DONNEES_UTILISATEUR_MAJ, values,{headers: {'Authorization': 'Bearer ' + window.localStorage.token}} )
             .then(async (result) => {
                 console.log(values)
                 if (result.data['reponse'] == 'utilisateur modifie') {
-                    alert('utilisateur enregistré et connecté')
-                    history.push("/"); //redirection homepage
+                    setDonnesUtilisateursSaving(false)
+                    alert("Vos données ont bien été mises à jour.")
+                    history.push("/");
+
                 }})
 
             //TODO YC : Gérer correctement l'erreur d'appel a l'API
@@ -43,8 +46,16 @@ function UtilisateurDonnees(props) {
     }
 
     return (
-        <>
-            {
+        <> { (donnesUtilisateursSaving) ?
+            (
+                <div className="d-flex justify-content-center pt-5">
+                    <div className="spinner-grow text-warning" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+            ) :
+            (
+
                 (error) ?
                     (
                         <>
@@ -52,14 +63,14 @@ function UtilisateurDonnees(props) {
                             <Error error={error}/>
                         </>
                     )
-                    : (<> {!isLoaded && (
+                    : (<> {!donnesUtilisateursLoaded && (
                         <div className="d-flex justify-content-center pt-5">
                             <div className="spinner-grow text-warning" role="status">
                                 <span className="sr-only">Loading...</span>
                             </div>
                         </div>
                     )}
-                        {isLoaded && (
+                        {donnesUtilisateursLoaded && (
                         <form onSubmit={handleSubmit(onSubmit)}>
 
                             <div className="form-group">
@@ -196,7 +207,7 @@ function UtilisateurDonnees(props) {
                         </form>
                         )}
                     </>)
-            }
+            )}
         </>
 
 
