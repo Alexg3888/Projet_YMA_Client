@@ -1,6 +1,7 @@
 import React from "react";
 import UtilisateurDonnees from "./UtilisateurDonnees";
 import {supprimerPanier} from "../../services/PanierService";
+import {Link} from "react-router-dom";
 
 function UtilisateurMain(props) {
 
@@ -27,10 +28,8 @@ function UtilisateurMain(props) {
                 </div>
                 <div className="row">
                     {/*****Bouton vider le panier*/}
-                    <button type="button" className="btn btn-warning mt-5" onClick={() => {
-
-                    }}>
-                        Historique des commandes
+                    <button type="button" className="btn btn-warning mt-5">
+                        <Link className='nav-link' to="/historique">Historique des commandes</Link>
                     </button>
 
                     {/*****FIN Bouton vider le panier*/}

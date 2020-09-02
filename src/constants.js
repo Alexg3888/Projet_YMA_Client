@@ -7,6 +7,6 @@ export const API_INSCRIPTION = API_URL + '/inscription';
 export const API_VALIDATION_CDE = API_AUTH_URL + '/validationPanier'
 export const API_DONNEES_UTILISATEUR = API_AUTH_URL + '/donneesUtilisateur'
 export const API_DONNEES_UTILISATEUR_MAJ = API_AUTH_URL + '/donneesUtilisateurMaj'
-export const API_HISTORIQUE_UTILSIATEUR = API_AUTH_URL + '/commande'
+export const API_HISTORIQUE_UTILSIATEUR = API_AUTH_URL + '/histoCommandes'
 // TODO YC : Repasser la durée du token à 1h
 export const TOKEN_TTL = 36000;
