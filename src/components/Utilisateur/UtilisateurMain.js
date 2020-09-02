@@ -11,7 +11,7 @@ function UtilisateurMain(props) {
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img src="/HomePage/slidepageinscription.jpg" className="d-block w-100" alt="..."/>
+                        <img src="/HomePage/slidepagemoncompte.jpg" className="d-block w-100" alt="..."/>
                     </div>
                 </div>
             </div>
@@ -22,17 +22,17 @@ function UtilisateurMain(props) {
                     <div className="col">
                         <UtilisateurDonnees/>
                     </div>
-                    <div className="col mt-5">
-                        <img src="/HomePage/fast-food.jpg" className="d-block w-100" alt="..."/>
+                    <div className="col mt-1">
+                        <img src="/HomePage/moncomptephoto.jpg" className="d-block w-100" alt="..."/>
                     </div>
                 </div>
-                <div className="row">
-                    {/*****Bouton vider le panier*/}
-                    <button type="button" className="btn btn-warning mt-5">
-                        <Link className='nav-link' to="/historique">Historique des commandes</Link>
+                <div className="row" id="bouton-historique">
+                    {/*****Bouton historique des commandes*/}
+                    <button type="button" className="btn btn-warning mt-5" >
+                        <Link className='nav-link text-dark' to="/historique">Historique des commandes</Link>
                     </button>
 
-                    {/*****FIN Bouton vider le panier*/}
+                    {/*****FIN Bouton historique des commandes*/}
                 </div>
             </div>
 

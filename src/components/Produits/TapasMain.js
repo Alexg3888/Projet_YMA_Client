@@ -9,7 +9,7 @@ function TapasMain() {
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img src="/HomePage/slidepageboisson.jpg" className="d-block w-100" alt="..."/>
+                        <img src="/HomePage/slidetapas.jpg" className="d-block w-100" alt="..."/>
                     </div>
                 </div>
             </div>

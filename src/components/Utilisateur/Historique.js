@@ -43,6 +43,7 @@ function Historique(props) {
                             </div>
                         </div>
                     )}
+                    <div class="container">
                         <div className="row">
                             <div
                                 className="col-4 py-3 d-flex flex-wrap align-content-center justify-content-center border-bottom">Date
@@ -69,6 +70,7 @@ function Historique(props) {
                                     prix_total={commande.prix_total}
                                 />
                             ))}
+                        </div>
                         </div>
                     </>)
             }
