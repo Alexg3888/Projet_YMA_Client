@@ -3,7 +3,6 @@ import {
     API_CATEGORIE_PRODUIT_ENDPOINT,
     API_PANIER,
     API_LOGIN,
-    TOKEN_TTL,
     API_VALIDATION_CDE,
     API_DONNEES_UTILISATEUR, API_HISTORIQUE_UTILSIATEUR
 } from "../constants";
@@ -14,7 +13,7 @@ export const getCatProduitData = () => {
     return Axios.get(API_CATEGORIE_PRODUIT_ENDPOINT, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
         // TODO YC : Ne pas s'authentifier si echec de l appel a API_CATEGORIE_PRODUIT_ENDPOINT
         .catch(async (e) => {
-            if (e.response.status == '401') {
+            if (e.response.status === '401') {
                 await login()
                 return Axios.get(API_CATEGORIE_PRODUIT_ENDPOINT, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
             } else {
@@ -27,7 +26,7 @@ export const getCatProduitData = () => {
 export const getHistorique = () => {
     return Axios.get(API_HISTORIQUE_UTILSIATEUR, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
         .catch(async (e) => {
-            if (e.response.status == '401') {
+            if (e.response.status === '401') {
                 await login()
                 return Axios.get(API_HISTORIQUE_UTILSIATEUR, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
             } else {
@@ -40,7 +39,7 @@ export const getHistorique = () => {
 export const getDonneesUtilisateur = () => {
     return Axios.get(API_DONNEES_UTILISATEUR, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
         .catch(async (e) => {
-            if (e.response.status == '401') {
+            if (e.response.status === '401') {
                 await login()
                 return Axios.get(API_DONNEES_UTILISATEUR, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
             } else {
@@ -73,12 +72,12 @@ export async function getContenuPanier() {
     }
     // TODO YC : Prevoir le cas ou le localstorage contient une chaine invalide et qui fait planter le parse
     jsonBody = JSON.parse(jsonBody)
-    if (jsonBody == "[]"){
+    if (jsonBody === "[]"){
         // TODO YC : Eviter de faire la requete si le panier est vide
     }
     return Axios.post(API_PANIER, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
         .catch(async (e) => {
-            if (e.response.status == '401') {
+            if (e.response.status === '401') {
                 await login()
                 return Axios.post(API_PANIER, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
             } else {
@@ -93,7 +92,7 @@ export async function postValidationPanier() {
     jsonBody['idProduit'] = panier;
     return Axios.post(API_VALIDATION_CDE, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
         .catch(async (e) => {
-            if (e.response.status == '401') {
+            if (e.response.status === '401') {
                 await login()
                 return Axios.post(API_VALIDATION_CDE, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
             } else {

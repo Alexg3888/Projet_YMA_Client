@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -14,7 +14,6 @@ import InscriptionMain from "./Utilisateur/InscriptionMain";
 import {checkTokenValidity, deconnexion} from "../services/authentificationService";
 import ConnexionMain from "./Utilisateur/ConnexionMain";
 import TapasMain from "./Produits/TapasMain";
-import validationPanier from "./Panier/ValidationPanier";
 import ValidationPanier from "./Panier/ValidationPanier";
 import UtilisateurMain from "./Utilisateur/UtilisateurMain";
 import Historique from "./Utilisateur/Historique";

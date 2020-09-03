@@ -8,7 +8,7 @@ function Header(props) {
     const location = useLocation()
 
     function isActive(name) {
-        return name == location.pathname ? 'active' : null
+        return name === location.pathname ? 'active' : null
     }
 
     return (
@@ -27,7 +27,7 @@ function Header(props) {
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/">
                                 Nos produits </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li className={'nav-item ' + isActive('/pizza')}>
