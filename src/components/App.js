@@ -49,7 +49,7 @@ function App() {
                         <Route path="/connexion" render={(props) => <ConnexionMain {...props}
                                                                              handleLoginState={(etat) => handleLoginState(etat)}/>}/>
                         <Route path="/panier" render={(props) => <PanierMain {...props}
-                                                                             handleLoginState={(etat) => handleLoginState(etat)}/>}/>
+                                                                             handleLoginState={(etat) => handleLoginState(etat)} loginState={loginState}/>}/>
                         <Route path="/inscription" render={(props) => <InscriptionMain {...props}
                                                                                        handleLoginState={(etat) => handleLoginState(etat)}/>}/>
                         <Route component={NotFound}/>
