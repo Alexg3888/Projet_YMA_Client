@@ -17,7 +17,7 @@ function InscriptionFormulaire(props) {
         setLoading(true)
         return Axios.post(API_INSCRIPTION, values)
             .then(async (result) => {
-                if (result.data['reponse'] == 'utilisateur enregistre') {
+                if (result.data['reponse'] === 'utilisateur enregistre') {
 
                     await login(values.email, values.password)
                         .then(() => {
@@ -148,7 +148,7 @@ function InscriptionFormulaire(props) {
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
-                                value: /[A-Za-z0-9'\.\-\s\,]/i,
+                                value: /[A-Za-z0-9'.-\s,]/i,
                                 message: "Rue invalide"
                             }
                         })}/>

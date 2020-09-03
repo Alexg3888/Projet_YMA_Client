@@ -41,7 +41,7 @@ function PanierMain(props) {
                 {/*****Bouton valider le panier*/}
                 <button type="button" className="btn btn-warning mt-5 ml-5" onClick={()=>{
                     let panier = window.localStorage.getItem('panier');
-                    if (panier != '[]'){
+                    if (panier !== '[]'){
                         if (!props.loginState){
                             alert ("Veuillez vous connecter avant de valider la commande")
                         } else {

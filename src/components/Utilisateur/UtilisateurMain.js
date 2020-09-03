@@ -1,6 +1,5 @@
 import React from "react";
 import UtilisateurDonnees from "./UtilisateurDonnees";
-import {supprimerPanier} from "../../services/PanierService";
 import {Link} from "react-router-dom";
 
 function UtilisateurMain(props) {
