@@ -34,8 +34,14 @@ function ProduitsListe(props) {
                             <Error error={error}/>
                         </>
                     )
-                    : (<> {!isLoaded && (<div>Chargement...</div>)}
-                        <div className="row">
+                    : (<> {!isLoaded && (
+                        <div class="d-flex justify-content-center pt-5">
+                            <div className="spinner-grow text-warning" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        )}
+                        <div className="row"  id="position-card">
                             {produits.map((categorieProduit, index) => (
                                 <ProduitCard key={index}
                                              id={categorieProduit.id}
@@ -44,9 +50,7 @@ function ProduitsListe(props) {
                                              photo={categorieProduit.photo}
                                              description={categorieProduit.description}
                                 />
-
                             ))}
-
                         </div>
                     </>)
             }

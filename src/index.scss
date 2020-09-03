@@ -13,17 +13,37 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1{
+  font-family: 'Just Another Hand', cursive;
+}
+
+h2{
+  font-family: 'Just Another Hand', cursive;
+}
+
+.container {
+  flex-direction: row;
+
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-#pictofond{
+// Nav bar
 
-  // background-image: url("./../public/HomePage/fond.jpg")
-  // background-image: url("/HomePage/fond.jpg")
-   background-color: #30343f;
-   text-align: center;
+#navbarNav{
+  padding-left: 13%;
+
+}
+
+// Zone Picto CSS
+
+
+#pictofond{
+  background-image: url('/HomePage/fond.jpg');
+  background-size: cover;
 }
 
 #nomPicto {
@@ -36,4 +56,118 @@ code {
 .miniproduit{
   width: 50px;
   height: auto;
+}
+
+// card Pizza, Burger... responsive
+
+// @media (max-width: 767.98px){
+// .position-card{
+//   display: flex;
+//   flex-direction: column;
+//   max-width: 60%;
+//   }
+// }
+
+
+// Zone Call to action (Jumbotron) CSS
+
+.jumbotron{
+  background-image: url('/HomePage/jumbotron_fond.jpg');
+  margin-top: 50px;
+  padding-top:50px ;
+  text-align: center;
+ color: white;
+ background-size: cover;
+}
+
+
+.my-4{
+  background-color: #fcbe06;
+  height: 5px;
+  width: 100px
+}
+
+// Zone adresse + map
+
+.my-2{
+  background-color: #fcbe06;
+  height: 4px;
+  width: 100px;
+  margin-right: 500px;
+}
+
+// card
+
+.card-img-top{
+  max-width: 60%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.text-muted{
+  text-align: center;
+  font-size: 30px;
+ 
+  
+}
+
+.card-text{
+  text-align: center;
+ margin-bottom: 0px;
+ 
+}
+
+.card-title{
+  font-family: 'Just Another Hand', cursive;
+  text-align: center;
+}
+
+.btn {
+  font-family: 'Just Another Hand', cursive;
+  color: white;
+}
+
+// Footer
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  font-family: 'Just Another Hand', cursive;
+}
+
+.d-block{
+  width: 50%;
+}
+
+// panier
+
+.panier{
+  text-align: center;
+}
+
+// Page Validation commande
+
+.jumbotron-validation{
+
+  background-image: url('/HomePage/jumbotron_fond.jpg');
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  color: #e0a800;
+  background-size: cover;
+}
+
+
+// bouton historique des commandes
+
+#bouton-historique{
+   padding-left: 35%;
 }
