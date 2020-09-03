@@ -10,7 +10,7 @@ function ValidationPanier() {
         // TODO YC : Prevoir le cas ou le panier est vide
         postValidationPanier()
             .then(async (result) => {
-                if (result.data['reponse'] == 'Commande enregistree') {
+                if (result.data['reponse'] === 'Commande enregistree') {
                     window.localStorage.setItem('panier', "[]")
                     setIsLoaded(true)
                 }
