@@ -14,7 +14,8 @@ function Historique(props) {
     useEffect(() => {
         getHistorique()
             .then(result => {
-                if (result.data === "Pas de commande") {
+                console.log(result.data)
+                if (result === null) {
                     alert("Vous n'avez pas encore valider de commande")
                     history.push("/utilisateur");
                 } else {
