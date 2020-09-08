@@ -4,7 +4,7 @@ import {
     API_PANIER,
     API_LOGIN,
     API_VALIDATION_CDE,
-    API_DONNEES_UTILISATEUR, API_HISTORIQUE_UTILSIATEUR
+    API_DONNEES_UTILISATEUR, API_HISTORIQUE_UTILSIATEUR, API_ADMIN_MAIN
 } from "../constants";
 import {supprimerPanier} from "./PanierService";
 import jwt_decode from "jwt-decode";
@@ -47,6 +47,18 @@ export const getDonneesUtilisateur = () => {
             }
         })
 
+};
+
+export const getAdminVerifie = () => {
+    return Axios.get(API_ADMIN_MAIN, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+        .catch(async (e) => {
+            if (e.response.status === '401') {
+                await login()
+                return Axios.get(API_ADMIN_MAIN, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+            } else {
+                throw e
+            }
+        })
 };
 
 
