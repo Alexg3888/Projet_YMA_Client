@@ -19,6 +19,8 @@ import UtilisateurMain from "./Utilisateur/UtilisateurMain";
 import Historique from "./Utilisateur/Historique";
 import AdminMain from "./Admin/AdminMain";
 import EnregistrerProduit from "./Admin/EnregistrerProduit";
+import ListeProduits from "./Admin/ListeProduits";
+import ModifierProduit from "./Admin/ModifierProduit";
 
 function App() {
     const [loginState, setLoginState] = useState(checkTokenValidity());
@@ -48,6 +50,8 @@ function App() {
                         <Route path="/historique" component={Historique}/>
                         <Route path="/validationPanier" component={ValidationPanier}/>
                         <Route path="/enregistrerProduit" component={EnregistrerProduit} />
+                        <Route path="/listeProduits" component={ListeProduits} />
+                        <Route path="/modifierProduit/:id" component={ModifierProduit} />
                         <Route path="/adminMain" component={AdminMain} />
                         <Route path="/connexion" render={(props) => <ConnexionMain {...props}
                                                                              handleLoginState={(etat) => handleLoginState(etat)}/>}/>

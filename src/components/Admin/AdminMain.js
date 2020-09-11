@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Link, useHistory} from "react-router-dom";
-import {getAdminVerifie, postValidationPanier} from "../../services/ApiService";
+import {getAdminVerifie} from "../../services/ApiService";
 import Error from "../Error";
+import Spinner from "../Utils/Spinner";
 
 function AdminMain(props) {
 
@@ -12,8 +13,8 @@ function AdminMain(props) {
 
     useEffect(() => {
         getAdminVerifie()
-            .then(async (result) => {
-                if (!result.data['reponse'] === 'Adminnistrateur vérifié') {
+            .then((result) => {
+                if (result.data['reponse'] !== 'Adminnistrateur vérifié') {
                     alert("Accès non autorisé à cette page")
                     history.push('/')
                 } else {
@@ -22,7 +23,7 @@ function AdminMain(props) {
                 }
             })
             .catch((e) => setError(e))
-    }, [accesAutorise, isLoaded])
+    }, [accesAutorise, isLoaded, history])
 
     if (error) {
         return (
@@ -33,11 +34,7 @@ function AdminMain(props) {
         )
     } else if (!isLoaded) {
         return (<>
-            <div className="d-flex justify-content-center pt-5">
-                <div className="spinner-grow text-warning" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            </div>
+            <Spinner />
         </>)
     } else if (isLoaded && accesAutorise) {
         return (
@@ -59,6 +56,7 @@ function AdminMain(props) {
 
                         <ul>
                             <li><Link className='nav-link' to="/enregistrerProduit">Enregistrer un nouveau produit</Link></li>
+                            <li><Link className='nav-link' to="/listeProduits">Modifier un produit</Link></li>
                         </ul>
 
                     </div>

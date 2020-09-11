@@ -5,8 +5,9 @@ import Error from "../Error";
 import Axios from "axios";
 import {API_ENREGISTRER_PRODUIT} from "../../constants";
 import {useForm} from "react-hook-form";
+import Spinner from "../Utils/Spinner";
 
-function EnregistrerProduit(props) {
+function EnregistrerProduit() {
     const {handleSubmit, register, errors} = useForm();
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +19,7 @@ function EnregistrerProduit(props) {
         setIsLoading(true)
         getAdminVerifie()
             .then((result) => {
-                if (!result.data['reponse'] === 'Adminnistrateur vérifié') {
+                if (result.data['reponse'] !== 'Adminnistrateur vérifié') {
                     alert("Accès non autorisé à cette page")
                     history.push('/')
                 } else {
@@ -36,11 +37,10 @@ function EnregistrerProduit(props) {
                 }
             })
             .catch((e) => setError(e))
-    }, [])
+    }, [history])
 
     const onSubmit = values => {
         setIsLoading(true)
-        console.log(values)
         return Axios.post(API_ENREGISTRER_PRODUIT, values, {headers: {Authorization: "Bearer " + window.localStorage.token}})
             .then(async (result) => {
                 if (result.data['reponse'] === 'Produit enregistré') {
@@ -63,11 +63,7 @@ function EnregistrerProduit(props) {
         )
     } else if (isLoading) {
         return (<>
-            <div className="d-flex justify-content-center pt-5">
-                <div className="spinner-grow text-warning" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            </div>
+            <Spinner />
         </>)
     } else if (isLoading === false && accesAutorise === true) {
         return (
@@ -104,7 +100,7 @@ function EnregistrerProduit(props) {
                                         }
                                     })}/>
                                 <small
-                                    className="form-text text-muted text-warning">{errors.nom && errors.nom.message}</small>
+                                    className="form-text text-danger">{errors.nom && errors.nom.message}</small>
                             </div>
 
                             <div className="form-group">
@@ -115,14 +111,10 @@ function EnregistrerProduit(props) {
                                     defaultValue=""
                                     name="description"
                                     ref={register({
-                                        required: "Champs obligatoire",
-                                        pattern: {
-                                            value: /^[a-z ,.'-]+$/i,
-                                            message: "Description invalide"
-                                        }
+                                        required: "Champs obligatoire"
                                     })}/>
                                 <small
-                                    className="form-text text-muted text-warning">{errors.description && errors.description.message}</small>
+                                    className="form-text text-danger">{errors.description && errors.description.message}</small>
                             </div>
 
                             <div className="form-group">
@@ -136,16 +128,24 @@ function EnregistrerProduit(props) {
                                         required: "Champs obligatoire"
                                     })}/>
                                 <small
-                                    className="form-text text-muted text-warning">{errors.prix && errors.prix.message}</small>
+                                    className="form-text text-danger">{errors.prix && errors.prix.message}</small>
                             </div>
 
                             <div className="form-group">
                                 Promotion :
                                 <pre>
-                                    <input name="promo" type="radio" value="true" ref={register}/>
+                                    <input name="promo" type="radio" value="true" ref={register({
+                                        required: "Champs obligatoire"
+                                    })
+                                    }/>
                                     <label htmlFor="true"> Oui      </label>
-                                    <input name="promo" type="radio" value="false" ref={register}/>
+                                    <input name="promo" type="radio" value="false" ref={register({
+                                        required: "Champs obligatoire"
+                                    })
+                                    }/>
                                     <label htmlFor="false"> Non</label>
+                                    <small
+                                        className="form-text text-danger">{errors.promo && errors.promo.message}</small>
                                 </pre>
                             </div>
 
@@ -159,6 +159,15 @@ function EnregistrerProduit(props) {
                                     )}
                                 </select>
                             </div>
+
+                            <br />
+
+                            <div>
+                                Image du produit :
+                                <input type="file" name="photo"/>
+                            </div>
+
+                            <br /><br />
 
                             <button type="submit" className="btn btn-warning">Envoyer</button>
                         </form>

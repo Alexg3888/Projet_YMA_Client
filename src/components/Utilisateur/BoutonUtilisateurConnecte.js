@@ -10,7 +10,7 @@ function BoutonUtilisateurConnecte(props) {
         <>
             <div className="row" onClick={()=>{
                 getAdminVerifie()
-                    .then(async (result) => {
+                    .then((result) => {
                         if (result.data['reponse'] === 'Adminnistrateur vérifié') {
                             history.push("/adminMain")
                         }

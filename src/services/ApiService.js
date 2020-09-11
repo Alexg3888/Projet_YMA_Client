@@ -4,7 +4,7 @@ import {
     API_PANIER,
     API_LOGIN,
     API_VALIDATION_CDE,
-    API_DONNEES_UTILISATEUR, API_HISTORIQUE_UTILSIATEUR, API_ADMIN_MAIN
+    API_DONNEES_UTILISATEUR, API_HISTORIQUE_UTILSIATEUR, API_ADMIN_MAIN, API_PRODUIT
 } from "../constants";
 import {supprimerPanier} from "./PanierService";
 import jwt_decode from "jwt-decode";
@@ -22,6 +22,17 @@ export const getCatProduitData = () => {
         })
 
 };
+
+export const getProduit = ($id) => {
+    return Axios.get(API_PRODUIT + "/" + $id)
+        .catch(async (e) => {
+            if (e.response.status === '401') {
+                throw e
+            }
+        })
+
+};
+
 
 export const getHistorique = () => {
     return Axios.get(API_HISTORIQUE_UTILSIATEUR, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
