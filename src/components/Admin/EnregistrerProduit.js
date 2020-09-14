@@ -83,7 +83,7 @@ function EnregistrerProduit() {
                     <div className="text-center">
                         <h1>Administration du site : Enregistrer un nouveau produit</h1>
 
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                        <form enctype='multipart/form-data' onSubmit={handleSubmit(onSubmit)}>
 
                             <div className="form-group">
                                 <label htmlFor="nom">Nom</label>
