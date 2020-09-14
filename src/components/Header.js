@@ -14,8 +14,8 @@ function Header(props) {
     return (
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light bg-white">
-                <a className="navbar-brand" href="/"><img src="/HomePage/logo_nav.png" className="d-block w-100"
-                                                          alt="..."/></a>
+                <Link className='navbar-brand' to="/"><img src="/HomePage/logo_nav.png" className="d-block w-100"
+                                                           alt="..."/></Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

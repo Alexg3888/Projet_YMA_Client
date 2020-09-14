@@ -175,13 +175,9 @@ function Home() {
           Réservez dès maintenant pour bénéficier d'une remise de 20% sur le
           prix du Menu.
         </p>
-        <a
-          className="btn btn-warning btn-lg"
-          href="http://localhost:3000/contact"
-          role="button"
-        >
-          Commander
-        </a>
+        <button type="button" className="btn btn-warning btn-lg">
+          <Link className='nav-link text-light' to="/contact">Commander</Link>
+        </button>
       </div>
 
       {/* <!-- Fin Call to Action--> */}
