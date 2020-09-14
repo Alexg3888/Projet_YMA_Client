@@ -50,16 +50,15 @@ function AdminMain(props) {
                         </div>
                     </div>
                     {/* <!-- Fin carousel --> */}
-
-                    <div className="text-center">
+                    <div className="container">
+                    <div className="text-center mx-4 mt-5">
                         <h1>Administration du site</h1>
 
-                        <ul>
-                            <li><Link className='nav-link' to="/enregistrerProduit">Enregistrer un nouveau produit</Link></li>
-                            <li><Link className='nav-link' to="/listeProduits">Modifier un produit</Link></li>
-                        </ul>
-
+                        <button type="button" className="btn btn-warning mx-4 my-3"><Link className='nav-link text-light' to="/enregistrerProduit">Enregistrer un nouveau produit</Link></button>
+                        <button type="button" className="btn btn-warning mx-4 my-3"><Link className='nav-link text-light' to="/listeProduits">Modifier un produit</Link></button>
+                        
                     </div>
+                </div>
                 </div>
             </>
         )
