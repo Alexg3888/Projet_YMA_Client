@@ -3,6 +3,7 @@ import { getCatProduitData } from "../../services/ApiService";
 import { rechercheProduitsParCategorie } from "../../services/CategorieProduitService";
 import Error from "../Error";
 import ProduitCard from "./ProduitCard";
+import Spinner from "../Utils/Spinner";
 
 function ProduitsListe({ nomCategorie }) {
   const [error, setError] = useState(null);
@@ -36,29 +37,25 @@ function ProduitsListe({ nomCategorie }) {
           <Error error={error} />
         </>
       ) : (
-        <>
-          {" "}
-          {!isLoaded && (
-            <div class="d-flex justify-content-center pt-5">
-              <div className="spinner-grow text-warning" role="status">
-                <span className="sr-only">Loading...</span>
-              </div>
+          <>
+            {" "}
+            {!isLoaded && (
+              <Spinner />
+            )}
+            <div className="row" id="position-card">
+              {produits.map((categorieProduit, index) => (
+                <ProduitCard
+                  key={index}
+                  id={categorieProduit.id}
+                  nom={categorieProduit.nom}
+                  prix={categorieProduit.prix}
+                  photo={categorieProduit.photo}
+                  description={categorieProduit.description}
+                />
+              ))}
             </div>
-          )}
-          <div className="row" id="position-card">
-            {produits.map((categorieProduit, index) => (
-              <ProduitCard
-                key={index}
-                id={categorieProduit.id}
-                nom={categorieProduit.nom}
-                prix={categorieProduit.prix}
-                photo={categorieProduit.photo}
-                description={categorieProduit.description}
-              />
-            ))}
-          </div>
-        </>
-      )}
+          </>
+        )}
     </>
   );
 }

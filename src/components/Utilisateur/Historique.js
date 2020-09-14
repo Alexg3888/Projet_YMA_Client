@@ -3,6 +3,7 @@ import {getHistorique} from "../../services/ApiService";
 import Error from "../Error";
 import {useHistory} from "react-router-dom";
 import Commande from "./Commande";
+import Spinner from "../Utils/Spinner";
 
 function Historique(props) {
     const [error, setError] = useState(null);
@@ -37,11 +38,7 @@ function Historique(props) {
                 <>
                     {" "}
                     {!isLoaded && (
-                        <div class="d-flex justify-content-center">
-                            <div className="spinner-grow text-warning" role="status">
-                                <span className="sr-only">Loading...</span>
-                            </div>
-                        </div>
+                        <Spinner />
                     )}
                     <div class="container">
                         <div className="row">

@@ -4,7 +4,7 @@ import {API_INSCRIPTION} from "../../constants";
 import Axios from "axios";
 import {login} from "../../services/ApiService";
 import {useHistory} from "react-router-dom";
-
+import Spinner from "../Utils/Spinner";
 
 function InscriptionFormulaire(props) {
     const {handleSubmit, register, errors} = useForm();
@@ -44,13 +44,8 @@ function InscriptionFormulaire(props) {
     return (
         <> {(loading) ?
             (
-                <div className="d-flex justify-content-center pt-5">
-                    <div className="spinner-grow text-warning" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                </div>
+                <Spinner />
             ) : (
-
 
             <form onSubmit={handleSubmit(onSubmit)}>
 

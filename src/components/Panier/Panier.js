@@ -3,6 +3,7 @@ import {getContenuPanier} from "../../services/ApiService";
 import Error from "../Error";
 import PanierLigne from "./PanierLigne";
 import PanierTotal from "./PanierTotal";
+import Spinner from "../Utils/Spinner";
 
 function Panier(props) {
     const [error, setError] = useState(null);
@@ -37,11 +38,7 @@ function Panier(props) {
                         </>
                     )
                     : (<> {!isLoaded && (
-                        <div class="d-flex justify-content-center">
-                            <div className="spinner-grow text-warning" role="status">
-                                <span className="sr-only">Loading...</span>
-                            </div>
-                        </div>
+                            <Spinner />
                         )}
                         <div className="row">
                             {panier.map((panierLigne, index) => (
