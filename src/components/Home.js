@@ -102,19 +102,19 @@ function Home() {
         <div className="container mt-5 pb-3">
           <div className="row text-center" id="picto">
             <div className="col-sm mb-1 mt-3" id="nomPicto">
-              <img src="/HomePage/izza.png" alt="..." />
+              <img src="/HomePage/Pizza.png" alt="..." />
               <h3 id="nomPicto">Pizza</h3>
             </div>
             <div className="col-sm mb-1 mt-3" id="nomPicto">
-              <img src="/HomePage/urger.png" alt="..." />
+              <img src="/HomePage/Burger.png" alt="..." />
               <h3 id="nomPicto">Burger</h3>
             </div>
             <div className="col-sm mb-1 mt-3" id="nomPicto">
-              <img src="/HomePage/oisson.png" alt="..." />
+              <img src="/HomePage/Boisson.png" alt="..." />
               <h3 id="nomPicto">Boisson</h3>
             </div>
             <div className="col-sm mb-1 mt-3" id="nomPicto">
-              <img src="/HomePage/essert.png" alt="..." />
+              <img src="/HomePage/dessert.png" alt="..." />
               <h3 id="nomPicto">Dessert</h3>
             </div>
           </div>
