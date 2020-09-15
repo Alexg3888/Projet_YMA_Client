@@ -10,22 +10,31 @@ import Spinner from "../Utils/Spinner";
 function ModifierProduit() {
     const {handleSubmit, register, errors} = useForm();
     const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [accesAutorise, setAccesAutorise] = useState(false);
     const [categoriesProduit, setCategoriesProduit] = useState([]);
-    const [produit, setProduit] = useState([]);
+    const [produit, setProduit] = useState(null);
     const history = useHistory();
 
     let params = useParams();
 
     useEffect(() => {
-        setIsLoading(true)
+        // setIsLoading(true)
         getAdminVerifie()
             .then((result) => {
                 if (result.data['reponse'] !== 'Adminnistrateur vérifié') {
                     alert("Accès non autorisé à cette page")
                     history.push('/')
                 } else {
+                    getProduit(params.id)
+                        .then((result) => {
+                            setProduit(result.data)
+                            console.log(result.data)
+                            setAccesAutorise(true)
+                            console.log("produit:loadingFalse")
+                            setIsLoading(false)
+                        })
+                        .catch((e) => setError(e))
                     getCatProduitData()
                         .then((result) => {
                             let categories = []
@@ -34,14 +43,7 @@ function ModifierProduit() {
                             }
                             setCategoriesProduit(categories)
                             setAccesAutorise(true)
-                            setIsLoading(false)
-                        })
-                        .catch((e) => setError(e))
-                    getProduit(params.id)
-                        .then((result) => {
-                            setProduit(result.data)
-                            console.log(result.data)
-                            setAccesAutorise(true)
+                            console.log("getcatproduitdata:loadingFalse")
                             setIsLoading(false)
                         })
                         .catch((e) => setError(e))
@@ -78,7 +80,7 @@ function ModifierProduit() {
         return (<>
             <Spinner />
         </>)
-    } else if (isLoading === false && accesAutorise === true) {
+    } else if (isLoading === false && accesAutorise === true && produit !== null) {
 
 
         return (
@@ -111,7 +113,7 @@ function ModifierProduit() {
                                 ref={register({
                                     required: "Champs obligatoire",
                                     pattern: {
-                                        value: /^[a-z ,.'-]+$/i,
+                                        value: /^[0-9a-z ,.'-]+$/i,
                                         message: "Nom invalide"
                                     }
                                 })}/>
@@ -141,7 +143,11 @@ function ModifierProduit() {
                                 defaultValue={produit.prix}
                                 name="prix"
                                 ref={register({
-                                    required: "Champs obligatoire"
+                                    required: "Champs obligatoire",
+                                    pattern: {
+                                        value: /^[0-9]+(\.|)[0-9]{0,2}$/g,
+                                        message: "Prix invalide (2 décimales maximum, pas de devise)"
+                                    }
                                 })}/>
                             <small
                                 className="form-text text-danger">{errors.prix && errors.prix.message}</small>
@@ -171,10 +177,10 @@ function ModifierProduit() {
 
                         <div className="form-group">
                             Catégorie de produit :
-                            <select name="categorie" ref={register}>
+                                <select name="categorie" ref={register}>
                                 {categoriesProduit.map(
                                     (cat)=> (
-                                        <option value={cat}>{cat}</option>
+                                        produit.categorieProduit.nom === cat ? <option value={cat} selected>{cat}</option> : <option value={cat}>{cat}</option>
                                     )
                                 )}
                             </select>

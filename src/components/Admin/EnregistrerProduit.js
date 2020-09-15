@@ -98,7 +98,7 @@ function EnregistrerProduit() {
                                     ref={register({
                                         required: "Champs obligatoire",
                                         pattern: {
-                                            value: /^[a-z ,.'-]+$/i,
+                                            value: /^[0-9a-z ,.'-]+$/i,
                                             message: "Nom invalide"
                                         }
                                     })}/>
@@ -130,8 +130,8 @@ function EnregistrerProduit() {
                                     ref={register({
                                         required: "Champs obligatoire",
                                         pattern: {
-                                            value: /(\d+\.\d{1,2})/g,
-                                            message: "Prix invalide"
+                                            value: /^[0-9]+(\.|)[0-9]{0,2}$/g,
+                                            message: "Prix invalide (2 décimales maximum, pas de devise)"
                                         }
                                     })}/>
                                 <small
