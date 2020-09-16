@@ -19,11 +19,13 @@ function BoutonUtilisateurConnecte(props) {
                 {window.localStorage.getItem('useremail')}
             </div>
             <div className="row">
-                <Link to="#" onClick={()=>{
-                    props.handleLoginState(false)
-                    deconnexion()
-                    history.push("/")
-                }}>Se déconnecter</Link>
+                <div className="col align-items-center">
+                    <Link to="#" onClick={()=>{
+                        props.handleLoginState(false)
+                        deconnexion()
+                        history.push("/")
+                    }}>Se déconnecter</Link>
+                </div>
             </div>
         </>
     )
