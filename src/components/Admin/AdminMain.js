@@ -44,7 +44,7 @@ function AdminMain(props) {
                     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                                <img src="/HomePage/slidevotrepanier.jpg" className="d-block w-100"
+                                <img src="/HomePage/slidepageadmin.jpg" className="d-block w-100"
                                      alt="..."/>
                             </div>
                         </div>
