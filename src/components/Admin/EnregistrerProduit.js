@@ -167,7 +167,7 @@ function EnregistrerProduit() {
                                 </select>
                             </div> */}
 
-                            <div class="form-group mt5">
+                            <div className="form-group mt5">
                                 <label for="inputState">Catégorie de produit :</label>
                                 <select className="form-control"name="categorie" ref={register}>
                                     {categoriesProduit.map(

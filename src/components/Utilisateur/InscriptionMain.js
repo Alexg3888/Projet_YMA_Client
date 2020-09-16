@@ -15,8 +15,8 @@ function InscriptionMain(props) {
             </div>
             {/* <!-- Fin carousel --> */}
 
-            <div class="container">
-                <div class="row mt-5">
+            <div className="container">
+                <div className="row mt-5">
                     <div className="col">
                         <InscriptionFormulaire handleLoginState={props.handleLoginState}/>
                     </div>

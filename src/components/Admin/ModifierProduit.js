@@ -3,7 +3,7 @@ import {useHistory, useParams} from "react-router-dom";
 import {getAdminVerifie, getCatProduitData, getProduit} from "../../services/ApiService";
 import Error from "../Error";
 import Axios from "axios";
-import {API_ENREGISTRER_PRODUIT, API_PRODUIT_MAJ} from "../../constants";
+import {API_PRODUIT_MAJ} from "../../constants";
 import {useForm} from "react-hook-form";
 import Spinner from "../Utils/Spinner";
 
@@ -29,9 +29,7 @@ function ModifierProduit() {
                     getProduit(params.id)
                         .then((result) => {
                             setProduit(result.data)
-                            console.log(result.data)
                             setAccesAutorise(true)
-                            console.log("produit:loadingFalse")
                             setIsLoading(false)
                         })
                         .catch((e) => setError(e))
@@ -43,7 +41,6 @@ function ModifierProduit() {
                             }
                             setCategoriesProduit(categories)
                             setAccesAutorise(true)
-                            console.log("getcatproduitdata:loadingFalse")
                             setIsLoading(false)
                         })
                         .catch((e) => setError(e))
@@ -175,7 +172,7 @@ function ModifierProduit() {
                         </div>
 
                         <div className="form-group">
-                        <label for="inputState">Catégorie de produit :</label>
+                        <label htmlFor="inputState">Catégorie de produit :</label>
                                 <select className="form-control" name="categorie" ref={register}>
                                 {categoriesProduit.map(
                                     (cat)=> (

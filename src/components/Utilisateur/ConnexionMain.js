@@ -42,8 +42,8 @@ function ConnexionMain(props) {
                     {/* <!-- Fin carousel --> */}
 
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div class="container">
-                            <div class="row mt-5">
+                        <div className="container">
+                            <div className="row mt-5">
                                 <div className="col">
                                     <div className="form-group mt-5">
                                         <label htmlFor="email">Email</label>

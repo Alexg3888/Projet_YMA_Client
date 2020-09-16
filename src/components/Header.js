@@ -30,6 +30,7 @@ function Header(props) {
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/">
                                 Nos produits </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <ul className="list-unstyled">
                                 <li className={'nav-item ' + isActive('/pizza')}>
                                     <Link className='nav-link' to="/pizza">Pizza</Link>
                                 </li>
@@ -45,6 +46,7 @@ function Header(props) {
                                 <li className={'nav-item ' + isActive('/dessert')}>
                                     <Link className='nav-link' to="/dessert">Dessert</Link>
                                 </li>
+                                </ul>
                             </div>
                         </li>
                         <li className={'nav-item ' + isActive('/contact')}>
