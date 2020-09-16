@@ -5,7 +5,7 @@ function BoutonSeConnecter(props) {
     return (
         <>
             <div className="row">
-                <Link to="/connexion">Se Connecter</Link>
+                <Link className="text-dark" to="/connexion">Se Connecter</Link>
             </div>
         </>
     )

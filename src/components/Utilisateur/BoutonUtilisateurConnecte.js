@@ -8,7 +8,7 @@ function BoutonUtilisateurConnecte(props) {
 
     return (
         <>
-            <div className="row" onClick={()=>{
+            <div className="row text-secondary" onClick={()=>{
                 getAdminVerifie()
                     .then((result) => {
                         if (result.data['reponse'] === 'Adminnistrateur vérifié') {
@@ -18,9 +18,9 @@ function BoutonUtilisateurConnecte(props) {
             }}>
                 {window.localStorage.getItem('useremail')}
             </div>
-            <div className="row">
-                <div className="col align-items-center">
-                    <Link to="#" onClick={()=>{
+            <div className="row text-dark">
+                <div className="col align-items-center text-dark">
+                    <Link className="text-dark" to="#" onClick={()=>{
                         props.handleLoginState(false)
                         deconnexion()
                         history.push("/")
