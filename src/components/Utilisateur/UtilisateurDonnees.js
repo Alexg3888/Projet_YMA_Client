@@ -34,7 +34,6 @@ function UtilisateurDonnees(props) {
         headers: { Authorization: "Bearer " + window.localStorage.token },
       })
         .then(async (result) => {
-          console.log(values);
           if (result.data["reponse"] === "utilisateur modifie") {
             setDonnesUtilisateursSaving(false);
             alert("Vos données ont bien été mises à jour.");

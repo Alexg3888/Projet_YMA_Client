@@ -71,7 +71,6 @@ function ListeProduits() {
                                     <li key={index}>
                                         {categorie.nom}
                                         <ul>
-                                            {console.log(categorie)}
                                             {categorie.produits.map((produit, index)=>(
                                                 <>
                                                     <li key={index}><Link className="nav-link" to={"/modifierProduit/" + produit.id}>
