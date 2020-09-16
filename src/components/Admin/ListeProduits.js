@@ -58,9 +58,14 @@ function ListeProduits() {
                 </div>
                 {/* <!-- Fin carousel --> */}
 
-                <div>
+                <div className="text-center mt-5 mb-5">
                     <h1>Administration du site : Modification de produits</h1>
-                    <ul>
+                    </div>
+                    
+                <div className="container">
+                <div className="row">
+                <div className="col">
+                <ul>
                         {produits.map((categorie, index) => (
                                 <>
                                     <li key={index}>
@@ -82,6 +87,14 @@ function ListeProduits() {
                         )}
                     </ul>
                 </div>
+                </div>
+                </div>
+                {/* <div className="col mt-5">
+                    <img src="/HomePage/ListeProduits.jpg" className="d-block w-100" alt="..."/>
+                    </div>
+                </div> */}
+        
+                
             </>
         )
     } else {

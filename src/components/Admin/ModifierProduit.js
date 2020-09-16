@@ -55,7 +55,6 @@ function ModifierProduit() {
     const onSubmit = values => {
         setIsLoading(true);
         values['id']=produit.id
-        console.log(values)
         return Axios.put(API_PRODUIT_MAJ, values, {headers: {Authorization: "Bearer " + window.localStorage.token}})
             .then(async (result) => {
                 if (result.data['reponse'] === 'Produit modifie') {
@@ -96,11 +95,11 @@ function ModifierProduit() {
                 </div>
                 {/* <!-- Fin carousel --> */}
 
-                <div className="text-center">
+                <div className="text-center mt-5 mb-2">
                     <h1>Administration du site : Modification produit (id : {produit.id})</h1>
-
                     <img src={produit.photo} className="modifProduitImg" alt="produit" />
-
+                </div>
+                <div className="container">
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div className="form-group">
@@ -176,8 +175,8 @@ function ModifierProduit() {
                         </div>
 
                         <div className="form-group">
-                            Catégorie de produit :
-                                <select name="categorie" ref={register}>
+                        <label for="inputState">Catégorie de produit :</label>
+                                <select className="form-control" name="categorie" ref={register}>
                                 {categoriesProduit.map(
                                     (cat)=> (
                                         produit.categorieProduit.nom === cat ? <option value={cat} selected>{cat}</option> : <option value={cat}>{cat}</option>
@@ -189,8 +188,6 @@ function ModifierProduit() {
                         <button type="submit" className="btn btn-warning">Envoyer</button>
                     </form>
                 </div>
-
-
 
             </>
         )
