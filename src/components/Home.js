@@ -185,9 +185,9 @@ function Home() {
             {/* <!-- Call to Action --> */}
 
             <div className="jumbotron container-fluid">
-                <h1 className="display-4">Notre offre du moment</h1>
+                <h1 className="display-4 text-warning">Notre offre du moment</h1>
                 <hr className="my-4"/>
-                <p className="lead">
+                <p className={window.innerWidth <= 1050 ? "lead bg-warning font-weight-bold" : "lead font-weight-bold"}>
                     Réservez dès maintenant pour bénéficier d'une remise de 20% sur le
                     prix du Menu.
                 </p>
