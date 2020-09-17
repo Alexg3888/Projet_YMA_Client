@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useHistory} from "react-router-dom";
 import {getAdminVerifie, getCatProduitData} from "../../services/ApiService";
 import Error from "../Error";
@@ -9,6 +9,7 @@ import Spinner from "../Utils/Spinner";
 
 function EnregistrerProduit() {
     const {handleSubmit, register, errors} = useForm();
+    const fileref = useRef();
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [accesAutorise, setAccesAutorise] = useState(false);
@@ -40,8 +41,15 @@ function EnregistrerProduit() {
     }, [history])
 
     const onSubmit = values => {
+        const formdata=new FormData()
+        Object.keys(values).forEach(function (key){
+            formdata.append(key, values[key])
+        }) // on recup toutes les clef de value, on boucle dessus et le append les insere ainsi que les valeurs
+        formdata.append('file', fileref.current.files[0]) // on insere dans le formdata le fichier
         setIsLoading(true)
-        return Axios.post(API_ENREGISTRER_PRODUIT, values, {headers: {Authorization: "Bearer " + window.localStorage.token}})
+        // fetch('google.com', {'method' : 'post', 'body' : formdata})
+        return Axios.post(API_ENREGISTRER_PRODUIT, formdata, {headers: {Authorization: "Bearer " + window.localStorage.token,
+                'content-type' : 'multipart/form-data'}})
             .then(async (result) => {
                 if (result.data['reponse'] === 'Produit enregistré') {
                     alert("Produit enregistré")
@@ -180,7 +188,7 @@ function EnregistrerProduit() {
 
                              <div>
                                 Image du produit :
-                                <input type="file" name="photo"/>
+                                <input type="file" name="photo" ref={fileref}/>
                             </div> 
                             
 
