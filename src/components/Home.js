@@ -2,19 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import Video from "./Utils/Video";
 
-function tailleElementsSpecifiques() {
-    if (window.innerWidth <= 650) {
-        if (window.innerWidth <= 370) {
-            return 280
-        } else {
-            return 350
-        }
-    } else {
-        return 550
-    }
-    // window.innerWidth <=650 ? (window.innerWidth <=370 ? return 280 : return 350) : return 550
-}
-
 function Home() {
     return (
         <>
