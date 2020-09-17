@@ -43,8 +43,8 @@ function ConnexionMain(props) {
 
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="container">
-                            <div className="row mt-5">
-                                <div className="col">
+                            <div className="row justify-content-md-center mt-4">
+                                <div className="col-md mt-1">
                                     <div className="form-group mt-5">
                                         <label htmlFor="email">Email</label>
                                         <input
@@ -85,7 +85,7 @@ function ConnexionMain(props) {
                                     {/*TODO YC : Gérer la perte de mot de passe*/}
                                 </div>
 
-                                <div className="col">
+                                <div className="col justify-content-md-center mt-4">
                                     <img src="/HomePage/burger-connexion.jpg" className="d-block w-100" alt="..." />
                                 </div>
                             </div>
