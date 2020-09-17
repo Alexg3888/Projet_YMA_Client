@@ -16,11 +16,11 @@ function InscriptionMain(props) {
             {/* <!-- Fin carousel --> */}
 
             <div className="container">
-                <div className="row mt-5">
-                    <div className="col">
+                <div className="row justify-content-md-center mt-4">
+                    <div className="col-md mt-1">
                         <InscriptionFormulaire handleLoginState={props.handleLoginState}/>
                     </div>
-                    <div className="col mt-5">
+                    <div className="col justify-content-md-center mt-4">
                         <img src="/HomePage/fast-food.jpg" className="d-block w-100" alt="..."/>
                     </div>
                 </div>
