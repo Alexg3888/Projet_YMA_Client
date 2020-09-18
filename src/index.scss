@@ -175,3 +175,28 @@ body {
 #bouton-historique{
    padding-left: 35%;
 }
+
+.ajustNav4XsScreen{
+  min-height : 88px;
+}
+
+@media only screen and (max-width : 992px) {
+  .navbarSmallCustom{
+    justify-content: left!important;
+  }
+}
+
+//@media only screen and (max-width : 991px) {
+//  .navbarCustom{
+//    align-items: flex-start;
+//    margin-top: 25px;
+//  }
+//}
+//@media only screen and (min-width : 992px) {
+//  .navbarCustom{
+//    align-items: center ;
+//  }
+//}
+
+
+
