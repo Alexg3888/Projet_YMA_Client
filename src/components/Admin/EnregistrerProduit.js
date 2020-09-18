@@ -197,11 +197,12 @@ function EnregistrerProduit() {
                                 </div>
 
 
-                                <button type="submit" className="btn btn-warning text-light mt-4">Envoyer</button>
+                                <button type="submit" className="mr-5 my-5 btn btn-warning text-light mt-4">Envoyer</button>
+                                <button type="button" className="ml-5 my-5 btn btn-warning text-light"onClick={() => (history.push("/adminMain"))}>Retour</button>
                             </form>
                         </div>
 
-                        <div className="col-lg d-none d-lg-block">
+                        <div className="col-lg d-none d-sm-block mt-3">
                             <div className="row">
                                 <div className="col d-flex justify-content-center">
                                     <img src="/HomePage/enregistrerProduit.jpg" className="d-block w-100" alt="..."/>

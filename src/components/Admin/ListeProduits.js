@@ -87,6 +87,11 @@ function ListeProduits() {
                                 )}
                             </ul>
                         </div>
+
+                        <div className="col mt-5 d-none d-md-block">
+                            <img src="/HomePage/ListeProduits.jpg" className="d-block w-100 " alt="..."/>
+                        </div>
+
                     </div>
                     <div className="row">
                         <div className="col">
@@ -94,10 +99,6 @@ function ListeProduits() {
                         </div>
                     </div>
                 </div>
-                {/* <div className="col mt-5">
-                    <img src="/HomePage/ListeProduits.jpg" className="d-block w-100" alt="..."/>
-                    </div>
-                </div> */}
 
 
             </>
