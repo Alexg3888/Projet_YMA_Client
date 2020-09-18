@@ -21,7 +21,6 @@ function Panier(props) {
             getContenuPanier()
                 .then(result => {
                         if (result === null) {
-                            console.log("je passe ici")
                             let msgError = {};
                             msgError['message'] = "Retour API sans réponse (result == null)"
                             setError(msgError)
