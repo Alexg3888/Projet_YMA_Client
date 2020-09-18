@@ -56,7 +56,7 @@ function ModifierProduit() {
             .then(async (result) => {
                 if (result.data['reponse'] === 'Produit modifie') {
                     alert("Produit modifié avec succès")
-                    history.push('/adminMain')
+                    history.push('/listeProduits')
                 }
             })
             .catch(async (e) => {
@@ -182,7 +182,8 @@ function ModifierProduit() {
                             </select>
                         </div>
 
-                        <button type="submit" className="btn btn-warning">Envoyer</button>
+                        <button type="submit" className="mx-2 btn btn-warning">Envoyer</button>
+                        <button type="button" className="mx-2 btn btn-warning"onClick={() => (history.push("/listeProduits"))}>Retour</button>
                     </form>
                 </div>
 

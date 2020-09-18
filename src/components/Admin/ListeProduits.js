@@ -40,7 +40,7 @@ function ListeProduits() {
         )
     } else if (isLoading) {
         return (<>
-            <Spinner />
+            <Spinner/>
         </>)
     } else if (isLoading === false && accesAutorise === true) {
 
@@ -60,40 +60,46 @@ function ListeProduits() {
 
                 <div className="text-center mt-5 mb-5">
                     <h1>Administration du site : Modification de produits</h1>
-                    </div>
-                    
+                </div>
+
                 <div className="container">
-                <div className="row">
-                <div className="col">
-                <ul>
-                        {produits.map((categorie, index) => (
-                                <>
-                                    <li key={index}>
-                                        {categorie.nom}
-                                        <ul>
-                                            {categorie.produits.map((produit, index)=>(
-                                                <>
-                                                    <li key={index}><Link className="nav-link" to={"/modifierProduit/" + produit.id}>
-                                                        {produit.nom} *** {produit.prix} € ***
-                                                    </Link></li>
-                                                </>
-                                                )
-                                            )}
-                                        </ul>
-                                    </li>
-                                </>
-                            )
-                        )}
-                    </ul>
-                </div>
-                </div>
+                    <div className="row">
+                        <div className="col">
+                            <ul>
+                                {produits.map((categorie, index) => (
+                                        <>
+                                            <li key={index}>
+                                                {categorie.nom}
+                                                <ul>
+                                                    {categorie.produits.map((produit, index) => (
+                                                            <>
+                                                                <li key={index}><Link className="nav-link"
+                                                                                      to={"/modifierProduit/" + produit.id}>
+                                                                    {produit.nom} *** {produit.prix} € ***
+                                                                </Link></li>
+                                                            </>
+                                                        )
+                                                    )}
+                                                </ul>
+                                            </li>
+                                        </>
+                                    )
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <button type="button" className="ml-5 mt-5 btn btn-warning"onClick={() => (history.push("/adminMain"))}>Retour</button>
+                        </div>
+                    </div>
                 </div>
                 {/* <div className="col mt-5">
                     <img src="/HomePage/ListeProduits.jpg" className="d-block w-100" alt="..."/>
                     </div>
                 </div> */}
-        
-                
+
+
             </>
         )
     } else {
