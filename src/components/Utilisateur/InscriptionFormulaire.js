@@ -17,7 +17,7 @@ function InscriptionFormulaire(props) {
         setLoading(true)
         return Axios.post(API_INSCRIPTION, values)
             .then(async (result) => {
-                if (result.data["reponse"] == "adresse mail existe deja") {
+                if (result.data["reponse"] === "adresse mail existe deja") {
                     alert("L'adresse email existe déjà, veuillez en utiliser une autre")
                     setLoading(false)
                 } else if (result.data['reponse'] === 'utilisateur enregistre') {
