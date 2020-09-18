@@ -70,7 +70,7 @@ function Home() {
                         <hr className="my-2"/>
                         <p>
                             Bistrot House vous invite à découvrir son concept de cuisine
-                            ouverte et à venir déguster ses burgers préparés à la commande,
+                            ouverte et à venir déguster ses burgers et pizzas préparés à la commande,
                             ses frites fraîches maison et ses boissons et desserts maison. Le
                             tout à un prix défiant toute concurrence.
                         </p>
@@ -82,15 +82,17 @@ function Home() {
                     </div>
                     {/* <!-- FIN a propos --> */}
                     {/* <!-- Zone Video (en dessous d'un ecran à 1200px passe a 400px et en dessous de 1050px disparait )--> */}
-                        <div className="col justify-content-md-center mt-4">
+                    {window.innerWidth > 430 ?
+                        <div className="col-md text-center mt-4">
                             <Video
                                 width={window.innerWidth <= 1200 ? 400 : 520}
-                                // width={window.innerWidth <= 650 ? (window.innerWidth <= 370 ? 280 : 350) : 550}
-                                poster={"/HomePage/video_poster.jpg"}
-                                source={"/HomePage/video_presentation.mp4"}
+                                // width="520"
+                                poster="/HomePage/video_poster.jpg"
+                                source="/HomePage/video_presentation.mp4"
                                 type="video/mp4"
                             />
                         </div>
+                        : ""}
                     {/* <!-- FIN zone Video --> */}
                 </div>
             </div>
@@ -186,7 +188,7 @@ function Home() {
             {/* <!-- Adresse + carte --> */}
 
             <div className="container">
-                <div className="row justify-content-md-center mt-4">
+                <div className="row mt-4">
                     <div className="col-md mt-1">
                         <h2 className="mb-4">Bistrot House</h2>
                         <h5>Adresse</h5>
@@ -201,7 +203,8 @@ function Home() {
                         <p>Bistrot House vous accueille 7j/7 de 8h à 1h.</p>
                     </div>
                     {/*(en dessous d'un ecran à 1200px passe l'iframe passe a 400px et en dessous de 1050px elle disparait )*/}
-                        <div className="col justify-content-md-center mt-4">
+                    {window.innerWidth > 430 ?
+                        <div className="col text-center">
                             <iframe
                                 title="Retrouvez-nous en ville"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2783.3565308084662!2d4.855894916201728!3d45.76404462140539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea89c07c6663%3A0x33ac6f782adc9be3!2s26%20Boulevard%20Jules%20Favre%2C%2069006%20Lyon!5e0!3m2!1sfr!2sfr!4v1598272714388!5m2!1sfr!2sfr"
@@ -213,6 +216,7 @@ function Home() {
                                 tabIndex="0"
                             ></iframe>
                         </div>
+                    : ""}
                 </div>
             </div>
             {/* <!-- Fin Adresse + carte  --> */}
