@@ -29,35 +29,37 @@ function ProduitsListe({ nomCategorie }) {
       .finally(() => setIsLoaded(true));
   }, [nomCategorie]);
 
-  return (
-    <>
-      {error ? (
-        <>
-          <div>Une erreur est survenue</div>
-          <Error error={error} />
-        </>
-      ) : (
+    if (error){
+        return (
           <>
-            {" "}
-            {!isLoaded && (
-              <Spinner />
-            )}
-            <div className="row justify-content-center" id="position-card">
-              {produits.map((categorieProduit, index) => (
-                <ProduitCard
-                  key={index}
-                  id={categorieProduit.id}
-                  nom={categorieProduit.nom}
-                  prix={categorieProduit.prix}
-                  photo={categorieProduit.photo}
-                  description={categorieProduit.description}
-                />
-              ))}
-            </div>
+              <div>Une erreur est survenue</div>
+              <Error error={error} />
           </>
-        )}
-    </>
-  );
+        )
+    } else if (!isLoaded){
+        return (
+            <>
+                <Spinner />
+            </>
+        )
+    } else {
+        return (
+            <>
+                <div className="row justify-content-center" id="position-card">
+                    {produits.map((categorieProduit, index) => (
+                       <ProduitCard
+                           key={index}
+                             id={categorieProduit.id}
+                             nom={categorieProduit.nom}
+                             prix={categorieProduit.prix}
+                             photo={categorieProduit.photo}
+                             description={categorieProduit.description}
+                        />
+                     ))}
+               </div>
+            </>
+        )
+    }
 }
 
 export default ProduitsListe;
