@@ -87,26 +87,11 @@ export async function login(email, password) {
 }
 
 export async function getContenuPanier() {
-    let jsonBody = window.localStorage.getItem('panier');
-    if (jsonBody === null) {
-        console.log("y a 1 erreur")
-        supprimerPanier()
-        jsonBody = window.localStorage.getItem('panier');
-    }
-    // TODO YC : Prevoir le cas ou le localstorage contient une chaine invalide et qui fait planter le parse
-    jsonBody = JSON.parse(jsonBody)
-    if (jsonBody === "[]"){
-        // TODO YC : Eviter de faire la requete si le panier est vide
-    }
-    return Axios.post(API_PANIER, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
-        .catch(async (e) => {
-            if (e.response.status === '401') {
-                await login()
-                return Axios.post(API_PANIER, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
-            } else {
+    let idProduitsPanier = window.localStorage.getItem('panier');
+        return Axios.get(API_PANIER, {params : {'idProduitsPanier' : encodeURIComponent(idProduitsPanier)}})
+            .catch(async (e) => {
                 throw e
-            }
-        })
+            })
 }
 
 export async function postValidationPanier() {

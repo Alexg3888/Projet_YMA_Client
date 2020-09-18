@@ -12,20 +12,27 @@ function Panier(props) {
     const [totalPanier, setTotalPanier] = useState(0);
 
     useEffect(() => {
-        getContenuPanier()
-            .then(result => {
-                if (result === null) {
-                    let msgError = {};
-                    msgError['message'] = "Retour API sans réponse (result == null)"
-                    setError(msgError)
-                } else {
-                    setPanier(result.data[0].panier);
-                    setTotalPanier(result.data[1].totalPanier);
-                }
-            })
-            .catch((e) => setError(e))
-            .finally(() => setIsLoaded(true))
-    }, [])
+        if (window.localStorage.getItem('panier') === null){
+            window.localStorage.setItem('panier', "[]")
+            setIsLoaded(true)
+        } else if (window.localStorage.getItem('panier') === '[]'){
+            setIsLoaded(true)
+        } else { // TODO YC : Prevoir le cas ou le localstorage contient une chaine invalide et qui fait planter le parse
+            getContenuPanier()
+                .then(result => {
+                        if (result === null) {
+                            console.log("je passe ici")
+                            let msgError = {};
+                            msgError['message'] = "Retour API sans réponse (result == null)"
+                            setError(msgError)
+                        } else {
+                            setPanier(result.data[0].panier);
+                            setTotalPanier(result.data[1].totalPanier);
+                        }
+                })
+                .catch((e) => setError(e))
+                .finally(() => setIsLoaded(true))
+        }}, [])
 
 
     return (<>
