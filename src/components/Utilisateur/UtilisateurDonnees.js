@@ -69,6 +69,7 @@ function UtilisateurDonnees(props) {
             <Spinner />
           )}
           {donnesUtilisateursLoaded && (
+
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
