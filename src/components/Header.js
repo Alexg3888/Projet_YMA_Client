@@ -1,6 +1,6 @@
 import React from "react";
 import BoutonUtilisateurConnecte from "./Utilisateur/BoutonUtilisateurConnecte";
-import {useLocation, Link} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import BoutonSeConnecter from "./Utilisateur/BoutonSeConnecter";
 import NavBar from "./NavBar";
 
@@ -8,9 +8,6 @@ function Header(props) {
 
     const location = useLocation()
 
-    function isActive(name) {
-        return name === location.pathname ? 'active' : null
-    }
 
     return (
         <div className="container">

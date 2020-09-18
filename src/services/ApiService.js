@@ -6,7 +6,6 @@ import {
     API_VALIDATION_CDE,
     API_DONNEES_UTILISATEUR, API_HISTORIQUE_UTILSIATEUR, API_ADMIN_MAIN, API_PRODUIT
 } from "../constants";
-import {supprimerPanier} from "./PanierService";
 import jwt_decode from "jwt-decode";
 
 export const getCatProduitData = () => {
