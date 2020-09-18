@@ -41,15 +41,19 @@ function EnregistrerProduit() {
     }, [history])
 
     const onSubmit = values => {
-        const formdata=new FormData()
-        Object.keys(values).forEach(function (key){
+        const formdata = new FormData()
+        Object.keys(values).forEach(function (key) {
             formdata.append(key, values[key])
         }) // on recup toutes les clef de value, on boucle dessus et le append les insere ainsi que les valeurs
         formdata.append('file', fileref.current.files[0]) // on insere dans le formdata le fichier
         setIsLoading(true)
         // fetch('google.com', {'method' : 'post', 'body' : formdata})
-        return Axios.post(API_ENREGISTRER_PRODUIT, formdata, {headers: {Authorization: "Bearer " + window.localStorage.token,
-                'content-type' : 'multipart/form-data'}})
+        return Axios.post(API_ENREGISTRER_PRODUIT, formdata, {
+            headers: {
+                Authorization: "Bearer " + window.localStorage.token,
+                'content-type': 'multipart/form-data'
+            }
+        })
             .then(async (result) => {
                 if (result.data['reponse'] === 'Produit enregistré') {
                     alert("Produit enregistré")
@@ -71,84 +75,85 @@ function EnregistrerProduit() {
         )
     } else if (isLoading) {
         return (<>
-            <Spinner />
+            <Spinner/>
         </>)
     } else if (isLoading === false && accesAutorise === true) {
         return (
             <>
-                <div>
-                    {/* <!-- Carousel  --> */}
-                    <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                        <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <img src="/HomePage/slidepageadmin.jpg" className="d-block w-100"
-                                     alt="..."/>
-                            </div>
+
+                {/* <!-- Carousel  --> */}
+                <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img src="/HomePage/slidepageadmin.jpg" className="d-block w-100"
+                                 alt="..."/>
                         </div>
                     </div>
-                    {/* <!-- Fin carousel --> */}
-                    
-                    <div className="text-center mt-5">
-                        <h1>Administration du site : Enregistrer un nouveau produit</h1>
-                    </div>
-                    <div className="container">
+                </div>
+                {/* <!-- Fin carousel --> */}
+
+                <div className="text-center mt-5">
+                    <h1>Administration du site : Enregistrer un nouveau produit</h1>
+                </div>
+
+                <div className="container">
                     <div className="row mt-5">
-                    <div className="col my-5 py-5">
-                        <form enctype='multipart/form-data' onSubmit={handleSubmit(onSubmit)}>
+                        <div className="col">
+                            <form enctype='multipart/form-data' onSubmit={handleSubmit(onSubmit)}>
 
-                            <div className="form-group mt-5">
-                                <label htmlFor="nom">Nom</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    defaultValue=""
-                                    name="nom"
-                                    ref={register({
-                                        required: "Champs obligatoire",
-                                        pattern: {
-                                            value: /^[0-9a-z ,.'-]+$/i,
-                                            message: "Nom invalide"
-                                        }
-                                    })}/>
-                                <small
-                                    className="form-text text-danger">{errors.nom && errors.nom.message}</small>
-                            </div>
+                                <div className="form-group mt-5">
+                                    <label htmlFor="nom">Nom</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        defaultValue=""
+                                        name="nom"
+                                        ref={register({
+                                            required: "Champs obligatoire",
+                                            pattern: {
+                                                value: /^[0-9a-z ,.'-]+$/i,
+                                                message: "Nom invalide"
+                                            }
+                                        })}/>
+                                    <small
+                                        className="form-text text-danger">{errors.nom && errors.nom.message}</small>
+                                </div>
 
-                            <div className="form-group">
-                                <label htmlFor="description">Description</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    defaultValue=""
-                                    name="description"
-                                    ref={register({
-                                        required: "Champs obligatoire"
-                                    })}/>
-                                <small
-                                    className="form-text text-danger">{errors.description && errors.description.message}</small>
-                            </div>
+                                <div className="form-group">
+                                    <label htmlFor="description">Description</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        defaultValue=""
+                                        name="description"
+                                        ref={register({
+                                            required: "Champs obligatoire"
+                                        })}/>
+                                    <small
+                                        className="form-text text-danger">{errors.description && errors.description.message}</small>
+                                </div>
 
-                            <div className="form-group">
-                                <label htmlFor="prix">Prix</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    defaultValue=""
-                                    name="prix"
-                                    ref={register({
-                                        required: "Champs obligatoire",
-                                        pattern: {
-                                            value: /^[0-9]+(\.|)[0-9]{0,2}$/g,
-                                            message: "Prix invalide (2 décimales maximum, pas de devise)"
-                                        }
-                                    })}/>
-                                <small
-                                    className="form-text text-danger">{errors.prix && errors.prix.message}</small>
-                            </div>
+                                <div className="form-group">
+                                    <label htmlFor="prix">Prix</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        defaultValue=""
+                                        name="prix"
+                                        ref={register({
+                                            required: "Champs obligatoire",
+                                            pattern: {
+                                                value: /^[0-9]+(\.|)[0-9]{0,2}$/g,
+                                                message: "Prix invalide (2 décimales maximum, pas de devise)"
+                                            }
+                                        })}/>
+                                    <small
+                                        className="form-text text-danger">{errors.prix && errors.prix.message}</small>
+                                </div>
 
-                            <div className="form-group">
-                                Promotion :
-                                <pre>
+                                <div className="form-group">
+                                    Promotion :
+                                    <pre>
                                     <input name="promo" type="radio" value="true" ref={register({
                                         required: "Champs obligatoire"
                                     })
@@ -162,9 +167,9 @@ function EnregistrerProduit() {
                                     <small
                                         className="form-text text-danger">{errors.promo && errors.promo.message}</small>
                                 </pre>
-                            </div>
+                                </div>
 
-                            {/* <div className="form-group mt5">
+                                {/* <div className="form-group mt5">
                                 Catégorie de produit :
                                 <select name="categorie" ref={register}>
                                     {categoriesProduit.map(
@@ -175,33 +180,38 @@ function EnregistrerProduit() {
                                 </select>
                             </div> */}
 
-                            <div className="form-group mt5">
-                                <label for="inputState">Catégorie de produit :</label>
-                                <select className="form-control"name="categorie" ref={register}>
-                                    {categoriesProduit.map(
-                                        (cat)=> (
-                                            <option value={cat}>{cat}</option>
-                                        )
-                                    )}
-                                </select>
+                                <div className="form-group mt5">
+                                    <label for="inputState">Catégorie de produit :</label>
+                                    <select className="form-control" name="categorie" ref={register}>
+                                        {categoriesProduit.map(
+                                            (cat) => (
+                                                <option value={cat}>{cat}</option>
+                                            )
+                                        )}
+                                    </select>
+                                </div>
+
+                                <div>
+                                    Image du produit :
+                                    <input type="file" name="photo" ref={fileref}/>
+                                </div>
+
+
+                                <button type="submit" className="btn btn-warning text-light mt-4">Envoyer</button>
+                            </form>
+                        </div>
+
+                        <div className="col-lg d-none d-lg-block">
+                            <div className="row">
+                                <div className="col d-flex justify-content-center">
+                                    <img src="/HomePage/enregistrerProduit.jpg" className="d-block w-100" alt="..."/>
+                                </div>
                             </div>
-
-                             <div>
-                                Image du produit :
-                                <input type="file" name="photo" ref={fileref}/>
-                            </div> 
-                            
-
-                            <button type="submit" className="btn btn-warning text-light mt-4">Envoyer</button>
-                        </form>
-                    </div>
-                    <div className="col">
-                    <img src="/HomePage/enregistrerProduit.jpg" className="d-block w-100" alt="..."/>
+                        </div>
                     </div>
                 </div>
-            </div>
-            </div>
-            
+
+
             </>
         )
     } else {
