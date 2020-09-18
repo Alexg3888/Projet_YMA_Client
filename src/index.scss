@@ -180,6 +180,10 @@ body {
   min-height : 88px;
 }
 
+.cusmtomCard{
+  min-width: 288px!important;
+}
+
 @media only screen and (max-width : 992px) {
   .navbarSmallCustom{
     justify-content: left!important;

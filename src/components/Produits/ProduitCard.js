@@ -6,8 +6,8 @@ const ProduitCard = (props) => {
 
     return (
         <>
-            <div className="col-4">
-                <div className="card my-3 ">
+            <div className="col-4 cusmtomCard px-2">
+                <div className="card my-3 cusmtomCard">
                     <img className="card-img-top" src={props.photo} alt="Card cap"/>
                     <div className="card-body">
                         <div className="shadow p-3 mb-5 bg-white rounded">

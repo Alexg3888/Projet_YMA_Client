@@ -42,7 +42,7 @@ function ProduitsListe({ nomCategorie }) {
             {!isLoaded && (
               <Spinner />
             )}
-            <div className="row" id="position-card">
+            <div className="row justify-content-center" id="position-card">
               {produits.map((categorieProduit, index) => (
                 <ProduitCard
                   key={index}
