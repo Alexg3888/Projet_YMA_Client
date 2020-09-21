@@ -9,7 +9,7 @@ import {
 import jwt_decode from "jwt-decode";
 
 export const getCatProduitData = () => {
-    return Axios.get(API_CATEGORIE_PRODUIT_ENDPOINT, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+    return Axios.get(API_CATEGORIE_PRODUIT_ENDPOINT)
         .catch(async (e) => {
             throw e
         })
