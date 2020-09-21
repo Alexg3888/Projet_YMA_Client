@@ -46,14 +46,14 @@ function ProduitsListe({ nomCategorie }) {
         return (
             <>
                 <div className="row justify-content-center" id="position-card">
-                    {produits.map((categorieProduit, index) => (
+                    {produits.map((produit, index) => (
                        <ProduitCard
                            key={index}
-                             id={categorieProduit.id}
-                             nom={categorieProduit.nom}
-                             prix={categorieProduit.prix}
-                             photo={categorieProduit.photo}
-                             description={categorieProduit.description}
+                             id={produit.id}
+                             nom={produit.nom}
+                             prix={produit.prix}
+                             photo={produit.photo}
+                             description={produit.description}
                         />
                      ))}
                </div>
