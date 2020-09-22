@@ -66,7 +66,7 @@ function ConnexionMain(props) {
                                         <input
                                             type="password"
                                             className="form-control"
-                                            defaultValue="password123"
+                                            defaultValue=""
                                             name="password"
                                             ref={register({
                                                 required: "Champs obligatoire",

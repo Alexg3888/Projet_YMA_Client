@@ -56,7 +56,6 @@ function InscriptionFormulaire(props) {
                     <input
                         type="email"
                         className="form-control"
-                        defaultValue={Math.round(new Date().getTime() / 1000) + "@test.com"}
                         name="email"
                         ref={register({
                             required: "Champs obligatoire",
@@ -73,7 +72,6 @@ function InscriptionFormulaire(props) {
                     <input
                         type="password"
                         className="form-control"
-                        defaultValue="password123"
                         name="password"
                         ref={register({
                             required: "Champs obligatoire",
@@ -92,7 +90,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="prenom"
-                        defaultValue="test"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -109,7 +106,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="nom"
-                        defaultValue="test"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -125,7 +121,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="num"
-                        defaultValue="18"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -141,7 +136,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="rue"
-                        defaultValue="test rue"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -157,7 +151,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="cp"
-                        defaultValue="78001"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -173,7 +166,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="ville"
-                        defaultValue="test ville"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -189,7 +181,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="telephone"
-                        defaultValue="0102030405"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
