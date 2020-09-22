@@ -3,6 +3,7 @@ import {getHistorique} from "../../services/ApiService";
 import Error from "../Error";
 import {useHistory} from "react-router-dom";
 import Commande from "./Commande";
+import Spinner from "../Utils/Spinner";
 
 function Historique(props) {
     const [error, setError] = useState(null);
@@ -14,7 +15,6 @@ function Historique(props) {
     useEffect(() => {
         getHistorique()
             .then((result) => {
-                console.log(result.data);
                 if (result.data === "Pas de commande") {
                     alert("Vous n'avez pas encore validé de commande");
                     history.push("/utilisateur");
@@ -37,13 +37,9 @@ function Historique(props) {
                 <>
                     {" "}
                     {!isLoaded && (
-                        <div class="d-flex justify-content-center">
-                            <div className="spinner-grow text-warning" role="status">
-                                <span className="sr-only">Loading...</span>
-                            </div>
-                        </div>
+                        <Spinner />
                     )}
-                    <div class="container">
+                    <div className="container">
                         <div className="row">
                             <div
                                 className="col-4 py-3 d-flex flex-wrap align-content-center justify-content-center border-bottom">
@@ -67,6 +63,7 @@ function Historique(props) {
                                     date_retrait={commande.date_retrait}
                                     emporte={commande.emporte}
                                     prix_total={commande.prix_total}
+                                    key={index}
                                 />
                             ))}
                         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import ProduitsListe from "./ProduitsListe";
 
-function PizzaMain() {
+function BoissonMain() {
     const NOM_CATEGORIE = 'Boisson'
 
     return (<>
@@ -27,4 +27,4 @@ function PizzaMain() {
 
 }
 
-export default PizzaMain;
+export default BoissonMain;

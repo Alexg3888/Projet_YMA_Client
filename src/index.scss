@@ -58,6 +58,10 @@ code {
   height: auto;
 }
 
+.modifProduitImg{
+  width: 208px;
+}
+
 // card Pizza, Burger... responsive
 
 // @media (max-width: 767.98px){
@@ -171,3 +175,32 @@ body {
 #bouton-historique{
    padding-left: 35%;
 }
+
+.ajustNav4XsScreen{
+  min-height : 88px;
+}
+
+.cusmtomCard{
+  min-width: 288px!important;
+}
+
+@media only screen and (max-width : 992px) {
+  .navbarSmallCustom{
+    justify-content: left!important;
+  }
+}
+
+//@media only screen and (max-width : 991px) {
+//  .navbarCustom{
+//    align-items: flex-start;
+//    margin-top: 25px;
+//  }
+//}
+//@media only screen and (min-width : 992px) {
+//  .navbarCustom{
+//    align-items: center ;
+//  }
+//}
+
+
+
