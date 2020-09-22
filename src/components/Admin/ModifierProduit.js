@@ -94,7 +94,7 @@ function ModifierProduit() {
 
                 <div className="text-center mt-5 mb-2">
                     <h1>Administration du site : Modification produit (id : {produit.id})</h1>
-                    <img src={produit.photo} className="modifProduitImg" alt="produit" />
+                    <img src={`${process.env.REACT_APP_SYMFONY_APP_URL}/Images/Produits/${produit.photo}`} className="modifProduitImg" alt="produit" />
                 </div>
                 <div className="container">
                     <form onSubmit={handleSubmit(onSubmit)}>
