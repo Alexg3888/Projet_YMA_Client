@@ -4,7 +4,7 @@ import {API_INSCRIPTION} from "../../constants";
 import Axios from "axios";
 import {login} from "../../services/ApiService";
 import {useHistory} from "react-router-dom";
-
+import Spinner from "../Utils/Spinner";
 
 function InscriptionFormulaire(props) {
     const {handleSubmit, register, errors} = useForm();
@@ -17,8 +17,10 @@ function InscriptionFormulaire(props) {
         setLoading(true)
         return Axios.post(API_INSCRIPTION, values)
             .then(async (result) => {
-                if (result.data['reponse'] === 'utilisateur enregistre') {
-
+                if (result.data["reponse"] === "adresse mail existe deja") {
+                    alert("L'adresse email existe déjà, veuillez en utiliser une autre")
+                    setLoading(false)
+                } else if (result.data['reponse'] === 'utilisateur enregistre') {
                     await login(values.email, values.password)
                         .then(() => {
                             props.handleLoginState(true)
@@ -44,13 +46,8 @@ function InscriptionFormulaire(props) {
     return (
         <> {(loading) ?
             (
-                <div className="d-flex justify-content-center pt-5">
-                    <div className="spinner-grow text-warning" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                </div>
+                <Spinner />
             ) : (
-
 
             <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -59,7 +56,6 @@ function InscriptionFormulaire(props) {
                     <input
                         type="email"
                         className="form-control"
-                        defaultValue={Math.round(new Date().getTime() / 1000) + "@test.com"}
                         name="email"
                         ref={register({
                             required: "Champs obligatoire",
@@ -76,7 +72,6 @@ function InscriptionFormulaire(props) {
                     <input
                         type="password"
                         className="form-control"
-                        defaultValue="password123"
                         name="password"
                         ref={register({
                             required: "Champs obligatoire",
@@ -95,7 +90,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="prenom"
-                        defaultValue="test"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -112,7 +106,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="nom"
-                        defaultValue="test"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -128,7 +121,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="num"
-                        defaultValue="18"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -144,7 +136,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="rue"
-                        defaultValue="test rue"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -160,7 +151,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="cp"
-                        defaultValue="78001"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -176,7 +166,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="ville"
-                        defaultValue="test ville"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {
@@ -192,7 +181,6 @@ function InscriptionFormulaire(props) {
                     <input
                         className="form-control"
                         name="telephone"
-                        defaultValue="0102030405"
                         ref={register({
                             required: "Champs obligatoire",
                             pattern: {

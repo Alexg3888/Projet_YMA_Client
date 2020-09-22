@@ -3,6 +3,7 @@ import {getContenuPanier} from "../../services/ApiService";
 import Error from "../Error";
 import PanierLigne from "./PanierLigne";
 import PanierTotal from "./PanierTotal";
+import Spinner from "../Utils/Spinner";
 
 function Panier(props) {
     const [error, setError] = useState(null);
@@ -11,20 +12,26 @@ function Panier(props) {
     const [totalPanier, setTotalPanier] = useState(0);
 
     useEffect(() => {
-        getContenuPanier()
-            .then(result => {
-                if (result === null) {
-                    let msgError = {};
-                    msgError['message'] = "Retour API sans réponse (result == null)"
-                    setError(msgError)
-                } else {
-                    setPanier(result.data[0].panier);
-                    setTotalPanier(result.data[1].totalPanier);
-                }
-            })
-            .catch((e) => setError(e))
-            .finally(() => setIsLoaded(true))
-    }, [])
+        if (window.localStorage.getItem('panier') === null){
+            window.localStorage.setItem('panier', "[]")
+            setIsLoaded(true)
+        } else if (window.localStorage.getItem('panier') === '[]'){
+            setIsLoaded(true)
+        } else { // TODO YC : Prevoir le cas ou le localstorage contient une chaine invalide et qui fait planter le parse
+            getContenuPanier()
+                .then(result => {
+                        if (result === null) {
+                            let msgError = {};
+                            msgError['message'] = "Retour API sans réponse (result == null)"
+                            setError(msgError)
+                        } else {
+                            setPanier(result.data[0].panier);
+                            setTotalPanier(result.data[1].totalPanier);
+                        }
+                })
+                .catch((e) => setError(e))
+                .finally(() => setIsLoaded(true))
+        }}, [])
 
 
     return (<>
@@ -37,11 +44,7 @@ function Panier(props) {
                         </>
                     )
                     : (<> {!isLoaded && (
-                        <div class="d-flex justify-content-center">
-                            <div className="spinner-grow text-warning" role="status">
-                                <span className="sr-only">Loading...</span>
-                            </div>
-                        </div>
+                            <Spinner />
                         )}
                         <div className="row">
                             {panier.map((panierLigne, index) => (

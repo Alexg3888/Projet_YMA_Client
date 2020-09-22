@@ -5,6 +5,7 @@ import Axios from "axios";
 import { getDonneesUtilisateur } from "../../services/ApiService";
 import { useHistory } from "react-router-dom";
 import Error from "../Error";
+import Spinner from "../Utils/Spinner";
 
 function UtilisateurDonnees(props) {
   const { handleSubmit, register, errors } = useForm();
@@ -33,7 +34,6 @@ function UtilisateurDonnees(props) {
         headers: { Authorization: "Bearer " + window.localStorage.token },
       })
         .then(async (result) => {
-          console.log(values);
           if (result.data["reponse"] === "utilisateur modifie") {
             setDonnesUtilisateursSaving(false);
             alert("Vos données ont bien été mises à jour.");
@@ -56,11 +56,7 @@ function UtilisateurDonnees(props) {
     <>
       {" "}
       {donnesUtilisateursSaving ? (
-        <div className="d-flex justify-content-center pt-5">
-          <div className="spinner-grow text-warning" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
+        <Spinner />
       ) : error ? (
         <>
           <div>Une erreur est survenue</div>
@@ -70,13 +66,10 @@ function UtilisateurDonnees(props) {
         <>
           {" "}
           {!donnesUtilisateursLoaded && (
-            <div className="d-flex justify-content-center pt-5">
-              <div className="spinner-grow text-warning" role="status">
-                <span className="sr-only">Loading...</span>
-              </div>
-            </div>
+            <Spinner />
           )}
           {donnesUtilisateursLoaded && (
+
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-group">
                 <label htmlFor="email">Email</label>

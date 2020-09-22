@@ -4,24 +4,28 @@ import {
     API_PANIER,
     API_LOGIN,
     API_VALIDATION_CDE,
-    API_DONNEES_UTILISATEUR, API_HISTORIQUE_UTILSIATEUR
+    API_DONNEES_UTILISATEUR, API_HISTORIQUE_UTILSIATEUR, API_ADMIN_MAIN, API_PRODUIT
 } from "../constants";
-import {supprimerPanier} from "./PanierService";
 import jwt_decode from "jwt-decode";
 
 export const getCatProduitData = () => {
-    return Axios.get(API_CATEGORIE_PRODUIT_ENDPOINT, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
-        // TODO YC : Ne pas s'authentifier si echec de l appel a API_CATEGORIE_PRODUIT_ENDPOINT
+    return Axios.get(API_CATEGORIE_PRODUIT_ENDPOINT)
+        .catch(async (e) => {
+            throw e
+        })
+
+};
+
+export const getProduit = ($id) => {
+    return Axios.get(API_PRODUIT + "/" + $id)
         .catch(async (e) => {
             if (e.response.status === '401') {
-                await login()
-                return Axios.get(API_CATEGORIE_PRODUIT_ENDPOINT, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
-            } else {
                 throw e
             }
         })
 
 };
+
 
 export const getHistorique = () => {
     return Axios.get(API_HISTORIQUE_UTILSIATEUR, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
@@ -49,6 +53,18 @@ export const getDonneesUtilisateur = () => {
 
 };
 
+export const getAdminVerifie = () => {
+    return Axios.get(API_ADMIN_MAIN, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+        .catch(async (e) => {
+            if (e.response.status === '401') {
+                await login()
+                return Axios.get(API_ADMIN_MAIN, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
+            } else {
+                throw e
+            }
+        })
+};
+
 
 //MEMO : le async de cette fonction sert a attendre le retour de "Axios.post(API_LOGIN, jsonBody)" avant de faire le "window.localStorage.setItem"
 export async function login(email, password) {
@@ -64,26 +80,11 @@ export async function login(email, password) {
 }
 
 export async function getContenuPanier() {
-    let jsonBody = window.localStorage.getItem('panier');
-    if (jsonBody === null) {
-        console.log("y a 1 erreur")
-        supprimerPanier()
-        jsonBody = window.localStorage.getItem('panier');
-    }
-    // TODO YC : Prevoir le cas ou le localstorage contient une chaine invalide et qui fait planter le parse
-    jsonBody = JSON.parse(jsonBody)
-    if (jsonBody === "[]"){
-        // TODO YC : Eviter de faire la requete si le panier est vide
-    }
-    return Axios.post(API_PANIER, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
-        .catch(async (e) => {
-            if (e.response.status === '401') {
-                await login()
-                return Axios.post(API_PANIER, jsonBody, {headers: {'Authorization': 'Bearer ' + window.localStorage.token}})
-            } else {
+    let idProduitsPanier = window.localStorage.getItem('panier');
+        return Axios.get(API_PANIER, {params : {'idProduitsPanier' : encodeURIComponent(idProduitsPanier)}})
+            .catch(async (e) => {
                 throw e
-            }
-        })
+            })
 }
 
 export async function postValidationPanier() {

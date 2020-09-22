@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {postValidationPanier} from "../../services/ApiService";
 import Error from "../Error";
+import Spinner from "../Utils/Spinner";
 
 function ValidationPanier() {
     const [error, setError] = useState(null);
@@ -29,11 +30,7 @@ function ValidationPanier() {
                         </>
                     )
                     : (<> {!isLoaded && (
-                        <div class="d-flex justify-content-center pt-5">
-                            <div className="spinner-grow text-warning" role="status">
-                                <span className="sr-only">Loading...</span>
-                            </div>
-                        </div>
+                            <Spinner />
                         )}
                         {isLoaded && (
                         <div>

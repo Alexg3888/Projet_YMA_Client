@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const NotFound = () => (
   <div className="jumbotron bg-white">
@@ -6,9 +7,10 @@ const NotFound = () => (
     <p className="lead">
       Désolé, cette page n'existe pas.
     </p>
-    <a className="btn btn-primary btn-lg" href="/" role="button">
+    <Link className='btn btn-primary btn-lg' to="/">
+
       Retour à l'accueil
-    </a>
+    </Link>
   </div>
 );
 

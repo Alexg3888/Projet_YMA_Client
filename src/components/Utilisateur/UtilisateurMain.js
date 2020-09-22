@@ -17,22 +17,27 @@ function UtilisateurMain(props) {
             {/* <!-- Fin carousel --> */}
 
             <div className="container">
+
                 <div className="row mt-5">
                     <div className="col">
                         <UtilisateurDonnees/>
                     </div>
-                    <div className="col mt-1">
+
+                    <div className="col-md mt-1 d-none d-lg-block">
                         <img src="/HomePage/moncomptephoto.jpg" className="d-block w-100" alt="..."/>
                     </div>
                 </div>
-                <div className="row" id="bouton-historique">
-                    {/*****Bouton historique des commandes*/}
-                    <button type="button" className="btn btn-warning mt-5" >
-                        <Link className='nav-link text-dark' to="/historique">Historique des commandes</Link>
-                    </button>
 
-                    {/*****FIN Bouton historique des commandes*/}
+                <div className="row">
+                    <div className="col text-center">
+                        {/*****Bouton historique des commandes*/}
+                        <button type="button" className="btn btn-warning mt-5">
+                            <Link className='nav-link text-dark' to="/historique">Historique des commandes</Link>
+                        </button>
+                        {/*****FIN Bouton historique des commandes*/}
+                    </div>
                 </div>
+
             </div>
 
         </>
